@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
@@ -102,15 +102,15 @@
       padding: 20px;
       max-width: 500px;
       width: 90%;
-      max-height: 90vh;  /* ограничиваем высоту окна */
-      overflow-y: auto;  /* если контента много, появится скролл */
+      max-height: 90vh;
+      overflow-y: auto;
       border-radius: 10px;
       text-align: center;
       position: relative;
     }
     .modal-content img {
       max-width: 100%;
-      max-height: 250px; /* ограничение по высоте картинки */
+      max-height: 250px;
       height: auto;
       margin-bottom: 15px;
       object-fit: contain;
@@ -170,7 +170,7 @@
       </div>
     </div>
 
-  <div class="product-card simpleCart_shelfItem">
+    <div class="product-card simpleCart_shelfItem">
       <img src="PHOTO/hd3.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
       <h3 class="item_name">Krekls ar garām piedurknēm</h3>
       <div class="price">
@@ -213,6 +213,7 @@
     <form id="orderForm" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="c49dd88b-948d-4903-9295-d9ab1c7b8afc">
       <input type="hidden" name="cart_contents" id="cart_contents" value="">
+      
       <label>
         Jūsu vārds:
         <input type="text" name="name" required>
@@ -224,6 +225,10 @@
       <label>
         Telefons:
         <input type="text" name="phone">
+      </label>
+      <label>
+        Piegādes adrese:
+        <input type="text" name="address" required>
       </label>
       <label>
         Komentāri:
@@ -355,5 +360,6 @@
   </script>
 
 </body>
-
 </html>
+
+
