@@ -2,7 +2,7 @@
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
-  <title>Hammer-shop — Veikals / Grozs</title>
+  <title>HammerShop — Veikals / Grozs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { 
@@ -169,7 +169,8 @@
       <div class="price">
         <span class="item_price">50.00</span> EUR
       </div>
-      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <!-- убрали item_add: теперь кнопка только открывает модалку -->
+      <a href="javascript:;" class="add-btn">Pievienot grozam</a>
       <div class="item-desc" style="display:none;">
         100% kokvilna
       </div>
@@ -183,7 +184,7 @@
       <div class="price">
         <span class="item_price">35.00</span> EUR
       </div>
-      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <a href="javascript:;" class="add-btn">Pievienot grozam</a>
       <div class="item-desc" style="display:none;">
         100% kokvilna
       </div>
@@ -197,7 +198,7 @@
       <div class="price">
         <span class="item_price">30.00</span> EUR
       </div>
-      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <a href="javascript:;" class="add-btn">Pievienot grozam</a>
       <div class="item-desc" style="display:none;">
         100% kokvilna
       </div>
@@ -211,7 +212,7 @@
       <div class="price">
         <span class="item_price">39.00</span> EUR
       </div>
-      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <a href="javascript:;" class="add-btn">Pievienot grozam</a>
       <div class="item-desc" style="display:none;">
         100% kokvilna
       </div>
@@ -261,12 +262,12 @@
   </div>
 
   <!-- Модальное окно -->
-  <div id="productModal" class="modal">
+  <div id="productModal" class="modal" aria-hidden="true">
     <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <button class="prev-btn">&lt;</button>
+      <span class="close-btn" title="Aizvērt">&times;</span>
+      <button class="prev-btn" aria-label="Previous image">&lt;</button>
       <img id="modalImage" src="" alt="">
-      <button class="next-btn">&gt;</button>
+      <button class="next-btn" aria-label="Next image">&gt;</button>
       <h3 id="modalTitle"></h3>
       <p id="modalDesc"></p>
       <label>
@@ -316,13 +317,16 @@
       let modalImages = [];
       let currentImageIndex = 0;
 
-      // открытие модалки
-      $('.product-img').on('click', function() {
-        var card = $(this).closest('.product-card');
+      // вспомогательная функция: открыть модалку для карточки
+      function openModalForCard(card) {
         var title = card.find('.item_name').text();
         var desc = card.find('.item-desc').text();
-        var imgList = $(this).data('images').split(',');
-        var price = parseFloat(card.find('.item_price').text());
+        var imgEl = card.find('.product-img').first();
+        var imgData = imgEl.data('images') || imgEl.attr('src');
+        var imgList = (typeof imgData === 'string' && imgData.indexOf(',') !== -1)
+                      ? imgData.split(',')
+                      : [imgEl.attr('src')];
+        var price = parseFloat(card.find('.item_price').text()) || 0;
 
         modalProduct = { name: title, price: price };
         modalImages = imgList;
@@ -334,7 +338,20 @@
         $('#modalQty').val(1);
         $('#modalSize').val("M");
 
-        $('#productModal').fadeIn();
+        $('#productModal').fadeIn().attr('aria-hidden', 'false');
+      }
+
+      // клик по картинке открывает модалку
+      $('.product-img').on('click', function() {
+        var card = $(this).closest('.product-card');
+        openModalForCard(card);
+      });
+
+      // клик по кнопке "Pievienot grozam" на карточке теперь тоже открывает модалку
+      $('.add-btn').on('click', function(e) {
+        e.preventDefault();
+        var card = $(this).closest('.product-card');
+        openModalForCard(card);
       });
 
       // переключение фото
@@ -355,7 +372,7 @@
       $('#modalAddBtn').on('click', function() {
         var qty = parseInt($('#modalQty').val()) || 1;
         var size = $('#modalSize').val();
-        if (modalProduct.name && modalProduct.price) {
+        if (modalProduct.name && modalProduct.price !== undefined) {
           simpleCart.add({
             name: modalProduct.name,
             price: modalProduct.price,
@@ -364,16 +381,16 @@
           });
           alert(modalProduct.name + " (" + size + ") × " + qty + " pievienots grozam!");
         }
-        $('#productModal').fadeOut();
+        $('#productModal').fadeOut().attr('aria-hidden', 'true');
       });
 
       // закрытие
       $('.close-btn').on('click', function() {
-        $('#productModal').fadeOut();
+        $('#productModal').fadeOut().attr('aria-hidden', 'true');
       });
       $('#productModal').on('click', function(e) {
         if (e.target === this) {
-          $(this).fadeOut();
+          $(this).fadeOut().attr('aria-hidden', 'true');
         }
       });
 
