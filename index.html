@@ -2,7 +2,7 @@
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
-  <title>RED — Veikals / Grozs</title>
+  <title>Hammer-shop — Veikals / Grozs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { 
@@ -122,6 +122,21 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+    .prev-btn, .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+
     .modal-add-btn {
       display: inline-block;
       margin-top: 15px;
@@ -147,7 +162,9 @@
   <h1>HammerShop</h1>
   <div class="products-list" id="products-list">
     <div class="product-card simpleCart_shelfItem">
-      <img src="PHOTO/hd.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
+      <img src="photo/hd-front.jpg" 
+           data-images="photo/hd-front.jpg,photo/hd-back.jpg" 
+           alt="Krekls ar garām piedurknēm" class="product-img">
       <h3 class="item_name">Krekls ar garām piedurknēm</h3>
       <div class="price">
         <span class="item_price">50.00</span> EUR
@@ -159,7 +176,9 @@
     </div>
 
     <div class="product-card simpleCart_shelfItem">
-      <img src="PHOTO/hd1.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
+      <img src="photo/hd1-front.jpg" 
+           data-images="photo/hd1-front.jpg,photo/hd1-back.jpg" 
+           alt="Krekls ar garām piedurknēm" class="product-img">
       <h3 class="item_name">Krekls ar garām piedurknēm</h3>
       <div class="price">
         <span class="item_price">35.00</span> EUR
@@ -171,7 +190,9 @@
     </div>
 
     <div class="product-card simpleCart_shelfItem">
-      <img src="PHOTO/hd3.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
+      <img src="photo/hd3-front.jpg" 
+           data-images="photo/hd3-front.jpg,photo/hd3-back.jpg" 
+           alt="Krekls ar garām piedurknēm" class="product-img">
       <h3 class="item_name">Krekls ar garām piedurknēm</h3>
       <div class="price">
         <span class="item_price">30.00</span> EUR
@@ -183,7 +204,9 @@
     </div>
 
     <div class="product-card simpleCart_shelfItem">
-      <img src="PHOTO/hd2.jpg" alt="T-Krekls" class="product-img">
+      <img src="photo/hd2-front.jpg" 
+           data-images="photo/hd2-front.jpg,photo/hd2-back.jpg" 
+           alt="T-Krekls" class="product-img">
       <h3 class="item_name">T-Krekls</h3>
       <div class="price">
         <span class="item_price">39.00</span> EUR
@@ -213,7 +236,6 @@
     <form id="orderForm" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="c49dd88b-948d-4903-9295-d9ab1c7b8afc">
       <input type="hidden" name="cart_contents" id="cart_contents" value="">
-      
       <label>
         Jūsu vārds:
         <input type="text" name="name" required>
@@ -242,7 +264,9 @@
   <div id="productModal" class="modal">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
+      <button class="prev-btn">&lt;</button>
       <img id="modalImage" src="" alt="">
+      <button class="next-btn">&gt;</button>
       <h3 id="modalTitle"></h3>
       <p id="modalDesc"></p>
       <label>
@@ -289,24 +313,42 @@
       });
 
       let modalProduct = {};
+      let modalImages = [];
+      let currentImageIndex = 0;
 
       // открытие модалки
       $('.product-img').on('click', function() {
         var card = $(this).closest('.product-card');
         var title = card.find('.item_name').text();
         var desc = card.find('.item-desc').text();
-        var imgSrc = $(this).attr('src');
+        var imgList = $(this).data('images').split(',');
         var price = parseFloat(card.find('.item_price').text());
 
         modalProduct = { name: title, price: price };
+        modalImages = imgList;
+        currentImageIndex = 0;
 
         $('#modalTitle').text(title);
         $('#modalDesc').text(desc);
-        $('#modalImage').attr('src', imgSrc);
+        $('#modalImage').attr('src', modalImages[currentImageIndex]);
         $('#modalQty').val(1);
         $('#modalSize').val("M");
 
         $('#productModal').fadeIn();
+      });
+
+      // переключение фото
+      $('.next-btn').on('click', function() {
+        if (modalImages.length > 0) {
+          currentImageIndex = (currentImageIndex + 1) % modalImages.length;
+          $('#modalImage').attr('src', modalImages[currentImageIndex]);
+        }
+      });
+      $('.prev-btn').on('click', function() {
+        if (modalImages.length > 0) {
+          currentImageIndex = (currentImageIndex - 1 + modalImages.length) % modalImages.length;
+          $('#modalImage').attr('src', modalImages[currentImageIndex]);
+        }
       });
 
       // добавление в корзину из модалки
@@ -361,6 +403,7 @@
 
 </body>
 </html>
+
 
 
 
