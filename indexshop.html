@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>RED — Veikals / Grozs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      max-width: 900px; 
+      margin: 0 auto; 
+      padding: 20px; 
+    }
+    .products-list { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+    }
+    .product-card { 
+      border: 1px solid #ccc; 
+      padding: 15px; 
+      width: calc(33% - 20px); 
+      box-sizing: border-box; 
+    }
+    .product-card h3 { 
+      margin: 10px 0; 
+      font-size: 1rem;
+    }
+    .product-card .price { 
+      font-weight: bold; 
+      margin-bottom: 10px; 
+    }
+    .product-card .add-btn { 
+      display: inline-block; 
+      padding: 8px 12px; 
+      background-color: #e60000; 
+      color: white; 
+      text-decoration: none; 
+      cursor: pointer; 
+      border-radius: 4px;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+      cursor: pointer;
+    }
+
+    .cart-area { 
+      margin-top: 40px; 
+      border: 1px solid #888; 
+      padding: 20px; 
+    }
+    .cart-items { margin-bottom: 20px; }
+    .simpleCart_items table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+    .simpleCart_items th, .simpleCart_items td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    .simpleCart_items th {
+      background-color: #f5f5f5;
+    }
+    .simpleCart_items td.item-name {
+      text-align: left;
+    }
+
+    .cart-total { font-size: 1.2em; font-weight: bold; }
+    .empty-cart-btn { margin-top: 10px; color: #555; cursor: pointer; display:inline-block; }
+    .order-form { margin-top: 30px; border: 1px solid #aaa; padding: 20px; }
+    .order-form label { display: block; margin-bottom: 10px; }
+    .order-form input, .order-form textarea, .order-form select { 
+      width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; box-sizing: border-box; 
+    }
+    .order-form button { padding: 10px 20px; background-color: #e60000; color: white; border: none; cursor: pointer; }
+
+    @media (max-width: 900px) {
+      .product-card { width: calc(50% - 20px); }
+    }
+    @media (max-width: 600px) {
+      .product-card { width: 100%; }
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;  /* ограничиваем высоту окна */
+      overflow-y: auto;  /* если контента много, появится скролл */
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 250px; /* ограничение по высоте картинки */
+      height: auto;
+      margin-bottom: 15px;
+      object-fit: contain;
+    }
+    .close-btn {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .modal-add-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 16px;
+      background-color: #e60000;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .modal-qty, .modal-size {
+      padding: 6px;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    .modal-qty { width: 80px; text-align: center; }
+    .modal-size { width: 150px; }
+  </style>
+</head>
+<body>
+
+  <h1>Hammer-shop</h1>
+  <div class="products-list" id="products-list">
+    <div class="product-card simpleCart_shelfItem">
+      <img src="photo/hd.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
+      <h3 class="item_name">Krekls ar garām piedurknēm</h3>
+      <div class="price">
+        <span class="item_price">50.00</span> EUR
+      </div>
+      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <div class="item-desc" style="display:none;">
+        100% kokvilna
+      </div>
+    </div>
+
+    <div class="product-card simpleCart_shelfItem">
+      <img src="photo/hd1.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
+      <h3 class="item_name">Krekls ar garām piedurknēm</h3>
+      <div class="price">
+        <span class="item_price">35.00</span> EUR
+      </div>
+      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <div class="item-desc" style="display:none;">
+        100% kokvilna
+      </div>
+    </div>
+
+  <div class="product-card simpleCart_shelfItem">
+      <img src="photo/hd3.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
+      <h3 class="item_name">Krekls ar garām piedurknēm</h3>
+      <div class="price">
+        <span class="item_price">30.00</span> EUR
+      </div>
+      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <div class="item-desc" style="display:none;">
+        100% kokvilna
+      </div>
+    </div>
+
+    <div class="product-card simpleCart_shelfItem">
+      <img src="photo/hd2.jpg" alt="T-Krekls" class="product-img">
+      <h3 class="item_name">T-Krekls</h3>
+      <div class="price">
+        <span class="item_price">39.00</span> EUR
+      </div>
+      <a href="javascript:;" class="add-btn item_add">Pievienot grozam</a>
+      <div class="item-desc" style="display:none;">
+        100% kokvilna
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-area">
+    <h2>Grozs</h2>
+    <div class="cart-items">
+      <div class="simpleCart_items"></div>
+    </div>
+    <div class="cart-total">
+      Kopā: <span class="simpleCart_total"></span> EUR
+    </div>
+    <div>
+      <a href="javascript:;" class="empty-cart-btn simpleCart_empty">Iztīrīt grozu</a>
+    </div>
+  </div>
+
+  <div class="order-form">
+    <h2>Noformēt pasūtījumu</h2>
+    <form id="orderForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="c49dd88b-948d-4903-9295-d9ab1c7b8afc">
+      <input type="hidden" name="cart_contents" id="cart_contents" value="">
+      <label>
+        Jūsu vārds:
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        E-pasts:
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Telefons:
+        <input type="text" name="phone">
+      </label>
+      <label>
+        Komentāri:
+        <textarea name="message" rows="4"></textarea>
+      </label>
+      <button type="submit">Pasūtīt</button>
+    </form>
+  </div>
+
+  <!-- Модальное окно -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <label>
+        Daudzums:
+        <input type="number" id="modalQty" class="modal-qty" value="1" min="1">
+      </label>
+      <label>
+        Izmērs:
+        <select id="modalSize" class="modal-size">
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+          <option value="XXXL">XXXL</option>
+        </select>
+      </label>
+      <button class="modal-add-btn" id="modalAddBtn">Pievienot grozam</button>
+    </div>
+  </div>
+
+  <!-- библиотеки -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplecartjs/3.0.5/simplecart.min.js"></script>
+
+  <script>
+    $(function() {
+      if (typeof simpleCart === 'undefined') {
+        console.error('simpleCart nav ielādēts. Pārbaudi CDN pieslēgumu.');
+        return;
+      }
+
+      simpleCart({
+        cartStyle: "table",
+        cartColumns: [
+          { attr: "name", label: "Prece", className: "item-name" },
+          { attr: "size", label: "Izmērs" },
+          { attr: "quantity", label: "Daudzums" },
+          { attr: "price", label: "Cena" },
+          { view: "remove", text: "Dzēst" }
+        ],
+        currency: "EUR",
+        checkout: { type: "" }
+      });
+
+      let modalProduct = {};
+
+      // открытие модалки
+      $('.product-img').on('click', function() {
+        var card = $(this).closest('.product-card');
+        var title = card.find('.item_name').text();
+        var desc = card.find('.item-desc').text();
+        var imgSrc = $(this).attr('src');
+        var price = parseFloat(card.find('.item_price').text());
+
+        modalProduct = { name: title, price: price };
+
+        $('#modalTitle').text(title);
+        $('#modalDesc').text(desc);
+        $('#modalImage').attr('src', imgSrc);
+        $('#modalQty').val(1);
+        $('#modalSize').val("M");
+
+        $('#productModal').fadeIn();
+      });
+
+      // добавление в корзину из модалки
+      $('#modalAddBtn').on('click', function() {
+        var qty = parseInt($('#modalQty').val()) || 1;
+        var size = $('#modalSize').val();
+        if (modalProduct.name && modalProduct.price) {
+          simpleCart.add({
+            name: modalProduct.name,
+            price: modalProduct.price,
+            quantity: qty,
+            size: size
+          });
+          alert(modalProduct.name + " (" + size + ") × " + qty + " pievienots grozam!");
+        }
+        $('#productModal').fadeOut();
+      });
+
+      // закрытие
+      $('.close-btn').on('click', function() {
+        $('#productModal').fadeOut();
+      });
+      $('#productModal').on('click', function(e) {
+        if (e.target === this) {
+          $(this).fadeOut();
+        }
+      });
+
+      // передача корзины в заказ
+      $('#orderForm').on('submit', function(e){
+        var items = simpleCart.items();
+        if (!items || items.length === 0) {
+          alert("Grozs ir tukšs");
+          e.preventDefault();
+          return false;
+        }
+        var summaryArr = [];
+        for (var i = 0; i < items.length; i++) {
+          var it = items[i];
+          var qty = it.get('quantity');
+          var name = it.get('name');
+          var size = it.get('size') || "-";
+          var price = parseFloat(it.get('price')).toFixed(2);
+          summaryArr.push(qty + ' × ' + name + ' (' + size + ', ' + price + ' EUR)');
+        }
+        var total = parseFloat(simpleCart.total()).toFixed(2);
+        var cartText = summaryArr.join('\n') + "\nKopā: " + total + " EUR";
+        $('#cart_contents').val(cartText);
+      });
+    });
+  </script>
+
+</body>
+</html>
