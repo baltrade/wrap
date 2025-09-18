@@ -1,76 +1,94 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
-<meta charset="UTF-8">
-<title>HammerShop — Veikals / Grozs</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; box-sizing: border-box; }
-.products-list { display: flex; flex-wrap: wrap; gap: 20px; }
-.product-card { border: 1px solid #ccc; padding: 15px; width: calc(33% - 20px); box-sizing: border-box; }
-.product-card h3 { margin: 10px 0; font-size: 1rem; }
-.product-card .price { font-weight: bold; margin-bottom: 10px; }
-.product-card .add-btn { display: inline-block; padding: 8px 12px; background-color: #e60000; color: white; text-decoration: none; cursor: pointer; border-radius: 4px; }
-.product-card img { max-width: 100%; height: auto; display: block; margin: 0 auto 10px; cursor: pointer; }
+  <meta charset="UTF-8">
+  <title>HammerShop — Veikals / Grozs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      max-width: 900px; 
+      margin: 0 auto; 
+      padding: 20px; 
+      box-sizing: border-box;
+    }
+    .products-list { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+    }
+    .product-card { 
+      border: 1px solid #ccc; 
+      padding: 15px; 
+      width: calc(33% - 20px); 
+      box-sizing: border-box; 
+    }
+    .product-card h3 { margin: 10px 0; font-size: 1rem; }
+    .product-card .price { font-weight: bold; margin-bottom: 10px; }
+    .product-card .add-btn { display: inline-block; padding: 8px 12px; background-color: #e60000; color: white; text-decoration: none; cursor: pointer; border-radius: 4px; }
+    .product-card img { max-width: 100%; height: auto; display: block; margin: 0 auto 10px; cursor: pointer; }
 
-.cart-area { margin-top: 40px; border: 1px solid #888; padding: 20px; overflow-x: auto; }
-.cart-items { margin-bottom: 20px; }
-.simpleCart_items table { width: 100%; border-collapse: collapse; margin-bottom: 15px; table-layout: auto; }
-.simpleCart_items th, .simpleCart_items td { border: 1px solid #ccc; padding: 8px; text-align: center; word-break: break-word; }
-.simpleCart_items th { background-color: #f5f5f5; }
-.simpleCart_items td.item-name { text-align: left; }
+    .cart-area { margin-top: 40px; border: 1px solid #888; padding: 20px; overflow-x: auto; }
+    .cart-items { margin-bottom: 20px; }
+    .simpleCart_items table { width: 100%; border-collapse: collapse; margin-bottom: 15px; table-layout: auto; }
+    .simpleCart_items th, .simpleCart_items td { border: 1px solid #ccc; padding: 8px; text-align: center; word-break: break-word; }
+    .simpleCart_items th { background-color: #f5f5f5; }
+    .simpleCart_items td.item-name { text-align: left; }
 
-.cart-total { font-size: 1.2em; font-weight: bold; }
-.empty-cart-btn { margin-top: 10px; color: #555; cursor: pointer; display:inline-block; }
-.order-form { margin-top: 30px; border: 1px solid #aaa; padding: 20px; }
-.order-form label { display: block; margin-bottom: 10px; }
-.order-form input, .order-form textarea, .order-form select { width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; box-sizing: border-box; }
-.order-form button { padding: 10px 20px; background-color: #e60000; color: white; border: none; cursor: pointer; }
+    .cart-total { font-size: 1.2em; font-weight: bold; }
+    .empty-cart-btn { margin-top: 10px; color: #555; cursor: pointer; display:inline-block; }
+    .order-form { margin-top: 30px; border: 1px solid #aaa; padding: 20px; }
+    .order-form label { display: block; margin-bottom: 10px; }
+    .order-form input, .order-form textarea, .order-form select { width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; box-sizing: border-box; }
+    .order-form button { padding: 10px 20px; background-color: #e60000; color: white; border: none; cursor: pointer; }
 
-@media (max-width: 900px) { .product-card { width: calc(50% - 20px); } }
-@media (max-width: 600px) { .product-card { width: 100%; } }
+    @media (max-width: 900px) { .product-card { width: calc(50% - 20px); } }
+    @media (max-width: 600px) { .product-card { width: 100%; } }
 
-/* Модальное окно */
-.modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
-.modal-content { background: #fff; padding: 20px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; border-radius: 10px; text-align: center; position: relative; box-sizing: border-box; }
-.modal-content img { max-width: 100%; max-height: 250px; height: auto; margin-bottom: 15px; object-fit: contain; }
-.close-btn { position: absolute; right: 15px; top: 10px; font-size: 1.5rem; cursor: pointer; }
-.prev-btn, .next-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 1.5rem; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
-.prev-btn { left: 10px; } .next-btn { right: 10px; }
+    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
+    .modal-content { background: #fff; padding: 20px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; border-radius: 10px; text-align: center; position: relative; box-sizing: border-box; }
+    .modal-content img { max-width: 100%; max-height: 250px; height: auto; margin-bottom: 15px; object-fit: contain; }
+    .close-btn { position: absolute; right: 15px; top: 10px; font-size: 1.5rem; cursor: pointer; }
+    .prev-btn, .next-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 1.5rem; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+    .prev-btn { left: 10px; } .next-btn { right: 10px; }
 
-.modal-add-btn { display: inline-block; margin-top: 15px; padding: 10px 16px; background-color: #e60000; color: white; border: none; cursor: pointer; border-radius: 6px; font-size: 1rem; }
-.modal-qty, .modal-size { padding: 6px; margin-top: 10px; font-size: 1rem; }
-.modal-qty { width: 80px; text-align: center; } .modal-size { width: 150px; }
-</style>
+    .modal-add-btn { display: inline-block; margin-top: 15px; padding: 10px 16px; background-color: #e60000; color: white; border: none; cursor: pointer; border-radius: 6px; font-size: 1rem; }
+    .modal-qty, .modal-size { padding: 6px; margin-top: 10px; font-size: 1rem; }
+    .modal-qty { width: 80px; text-align: center; } .modal-size { width: 150px; }
+  </style>
 </head>
 <body>
 
 <h1>HammerShop</h1>
 <div class="products-list" id="products-list">
-  <div class="product-card simpleCart_shelfItem" data-sku="Krekls001">
+  <!-- Пример карточки с уникальным кодом и ссылкой на фото -->
+  <div class="product-card simpleCart_shelfItem" data-code="HD001">
     <img src="PHOTO/hd-front.jpg" data-images="PHOTO/hd-front.jpg,PHOTO/hd-back.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
     <h3 class="item_name">Krekls ar garām piedurknēm (001)</h3>
     <div class="price"><span class="item_price">50.00</span> EUR</div>
     <a href="javascript:;" class="add-btn">Pievienot grozam</a>
     <div class="item-desc" style="display:none;">100% kokvilna</div>
   </div>
-  <div class="product-card simpleCart_shelfItem" data-sku="Krekls002">
+
+  <div class="product-card simpleCart_shelfItem" data-code="HD002">
     <img src="PHOTO/hd1-front.jpg" data-images="PHOTO/hd1-front.jpg,PHOTO/hd1-back.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
     <h3 class="item_name">Krekls ar garām piedurknēm (002)</h3>
     <div class="price"><span class="item_price">35.00</span> EUR</div>
     <a href="javascript:;" class="add-btn">Pievienot grozam</a>
     <div class="item-desc" style="display:none;">100% kokvilna</div>
   </div>
-  <div class="product-card simpleCart_shelfItem" data-sku="Krekls003">
+
+  <div class="product-card simpleCart_shelfItem" data-code="HD003">
     <img src="PHOTO/hd3-front.jpg" data-images="PHOTO/hd3-front.jpg,PHOTO/hd3-back.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
     <h3 class="item_name">Krekls ar garām piedurknēm (003)</h3>
     <div class="price"><span class="item_price">30.00</span> EUR</div>
     <a href="javascript:;" class="add-btn">Pievienot grozam</a>
     <div class="item-desc" style="display:none;">100% kokvilna</div>
   </div>
-  <div class="product-card simpleCart_shelfItem" data-sku="T001">
+
+  <div class="product-card simpleCart_shelfItem" data-code="HD004">
     <img src="PHOTO/hd2-front.jpg" data-images="PHOTO/hd2-front.jpg,PHOTO/hd2-back.jpg" alt="T-Krekls" class="product-img">
-    <h3 class="item_name">T-Krekls (T001)</h3>
+    <h3 class="item_name">T-Krekls (004)</h3>
     <div class="price"><span class="item_price">39.00</span> EUR</div>
     <a href="javascript:;" class="add-btn">Pievienot grozam</a>
     <div class="item-desc" style="display:none;">100% kokvilna</div>
@@ -79,9 +97,7 @@ body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding
 
 <div class="cart-area">
   <h2>Grozs</h2>
-  <div class="cart-items">
-    <div class="simpleCart_items"></div>
-  </div>
+  <div class="cart-items"><div class="simpleCart_items"></div></div>
   <div class="cart-total">Kopā: <span class="simpleCart_total"></span> EUR</div>
   <div><a href="javascript:;" class="empty-cart-btn simpleCart_empty">Iztīrīt grozu</a></div>
 </div>
@@ -137,14 +153,16 @@ $(function(){
 
   function openModal(card){
     let title = card.find('.item_name').text();
-    let sku = card.data('sku') || '';
     let desc = card.find('.item-desc').text();
+    let code = card.data('code') || '';
     let imgList = (card.find('.product-img').data('images') || card.find('.product-img').attr('src')).split(',');
     let price = parseFloat(card.find('.item_price').text()) || 0;
-    modalProduct = { name:title, sku:sku, price:price, img: imgList[0] };
+
+    modalProduct = { name:title, price:price, code: code, photo: imgList[0] };
     modalImages = imgList;
     currentImageIndex = 0;
-    $('#modalTitle').text(title + " (" + sku + ")");
+
+    $('#modalTitle').text(title + " [" + code + "]");
     $('#modalDesc').text(desc);
     $('#modalImage').attr('src', modalImages[currentImageIndex]);
     $('#modalQty').val(1);
@@ -157,35 +175,58 @@ $(function(){
     openModal($(this).closest('.product-card'));
   });
 
-  $('.next-btn').on('click', function(){ currentImageIndex=(currentImageIndex+1)%modalImages.length; $('#modalImage').attr('src', modalImages[currentImageIndex]); });
-  $('.prev-btn').on('click', function(){ currentImageIndex=(currentImageIndex-1+modalImages.length)%modalImages.length; $('#modalImage').attr('src', modalImages[currentImageIndex]); });
+  $('.next-btn').on('click', function(){ 
+    currentImageIndex = (currentImageIndex + 1) % modalImages.length; 
+    $('#modalImage').attr('src', modalImages[currentImageIndex]); 
+  });
+  $('.prev-btn').on('click', function(){ 
+    currentImageIndex = (currentImageIndex - 1 + modalImages.length) % modalImages.length; 
+    $('#modalImage').attr('src', modalImages[currentImageIndex]); 
+  });
 
   $('#modalAddBtn').on('click', function(){
-    let qty=parseInt($('#modalQty').val())||1, size=$('#modalSize').val();
+    let qty = parseInt($('#modalQty').val())||1, size = $('#modalSize').val();
     if(modalProduct.name && modalProduct.price!==undefined){
-      let nameWithSku = modalProduct.name + " (" + modalProduct.sku + ")";
-      let note = "Foto: " + modalImages[currentImageIndex];
-      simpleCart.add({ name:nameWithSku, price:modalProduct.price, quantity:qty, size:size, description:note });
-      alert(nameWithSku + " ("+size+") × "+qty+" pievienots grozam!");
+      simpleCart.add({ 
+        name: modalProduct.name, 
+        price: modalProduct.price, 
+        quantity: qty, 
+        size: size,
+        description: "<img src='"+modalProduct.photo+"' width='50'> Artikul: "+modalProduct.code
+      });
+      alert(modalProduct.name + " ("+size+") × "+qty+" pievienots grozam!");
     }
     $('#productModal').fadeOut().attr('aria-hidden','true');
   });
 
-  $('.close-btn, #productModal').on('click', function(e){ if(e.target===this) $('#productModal').fadeOut().attr('aria-hidden','true'); });
+  $('.close-btn, #productModal').on('click', function(e){ 
+    if(e.target===this) $('#productModal').fadeOut().attr('aria-hidden','true'); 
+  });
 
   $('#orderForm').on('submit', function(e){
-    let items=simpleCart.items();
-    if(!items||items.length===0){ alert("Grozs ir tukšs"); e.preventDefault(); return false; }
-    let summaryArr=[];
+    let items = simpleCart.items();
+    if(!items || items.length === 0){ 
+      alert("Grozs ir tukšs"); 
+      e.preventDefault(); 
+      return false; 
+    }
+
+    let summaryArr = [];
     items.forEach(it=>{
       let qty = it.get('quantity');
       let name = it.get('name');
-      let size = it.get('size') || "-";
+      let size = it.get('size')||"-";
       let price = parseFloat(it.get('price')).toFixed(2);
-      let photo = it.get('description') || "";
-      summaryArr.push(qty+' × '+name+' ('+size+', '+price+' EUR) '+photo);
+      let desc = it.get('description') || '';
+      summaryArr.push(qty + " × " + name + " (" + size + ", " + price + " EUR) " + desc);
     });
+
     $('#cart_contents').val(summaryArr.join('\n') + "\nKopā: "+parseFloat(simpleCart.total()).toFixed(2)+" EUR");
+
+    // Очистка корзины после отправки
+    setTimeout(function(){
+      simpleCart.empty();
+    }, 500);
   });
 });
 </script>
