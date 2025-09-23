@@ -9,14 +9,19 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background: #f0f0f0;
+      background: #3a3a3a; /* светлее темный фон */
+      color: #f0f0f0;
     }
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 10px;
     }
-    h1 { text-align: center; margin-bottom: 30px; }
+    h1 { 
+      text-align: center; 
+      margin-bottom: 30px; 
+      color: #ff8800; /* оранжевый */
+    }
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -24,12 +29,12 @@
       justify-content: center;
     }
     .project-card {
-      background: #fff;
-      border: 1px solid #ccc;
+      background: #4a4a4a; /* чуть светлее для карточек */
+      border: 1px solid #555;
       border-radius: 8px;
       overflow: hidden;
       width: calc(33% - 20px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -39,7 +44,7 @@
     .main-photo {
       max-width: 100%;
       height: auto;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #555;
       margin-bottom: 10px;
       border-radius: 4px;
       cursor: pointer;
@@ -55,12 +60,21 @@
       width: 50px;
       height: auto;
       cursor: pointer;
-      border: 1px solid #ccc;
+      border: 1px solid #777;
       border-radius: 3px;
     }
-    .project-card h3 { margin: 5px 0; font-size: 1rem; }
-    .project-card p { font-size: 0.9rem; color: #555; }
-    @media (max-width: 900px) { .project-card { width: calc(50% - 20px); } }
+    .project-card h3 { 
+      margin: 5px 0; 
+      font-size: 1rem; 
+      color: #fff;
+    }
+    .project-card p { 
+      font-size: 0.9rem; 
+      color: #ccc; 
+    }
+    @media (max-width: 900px) { .project-card { width: calc(50% - 20px); } 
+
+}
     @media (max-width: 600px) { .project-card { width: 100%; } }
 
     /* Modal styles */
@@ -112,6 +126,16 @@
     }
     .prev-btn { left: 10px; }
     .next-btn { right: 10px; }
+
+    /* Contacts */
+    .contacts {
+      margin-top: 50px;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #555;
+    }
+    .contacts h2 { margin-bottom: 15px; color: #ff8800; } /* оранжевый */
+    .contacts p { margin: 5px 0; color: #ccc; }
   </style>
 </head>
 <body>
@@ -119,9 +143,12 @@
     <h1>Truck Wrap Gallery</h1>
     <div class="gallery">
 
-      <!-- 10 projects with 5 photos each -->
-      <!-- Example project template -->
-      <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg,photo/p1_5.jpg">
+      <!-- Project 1 -->
+      <div class="project-card" data-
+
+images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg,photo/p
+
+1_5.jpg">
         <img class="main-photo" src="photo/p1_1.jpg" alt="Project 1">
         <div class="thumbnails">
           <img src="photo/p1_1.jpg" alt="">
@@ -130,11 +157,18 @@
           <img src="photo/p1_4.jpg" alt="">
           <img src="photo/p1_5.jpg" alt="">
         </div>
-        <h3> Volvo : Urban Style Wrap</h3>
-        <p>Full truck wrap with modern urban design, multiple angles shown.</p>
+        <h3>Volvo : Urban Style Wrap</h3>
+        <p>Full truck wrap with modern urban design, multiple angles 
+
+shown.</p>
       </div>
 
-      <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg,photo/p2_4.jpg,photo/p2_5.jpg">
+      <!-- Project 2 -->
+      <div class="project-card" data-
+
+images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg,photo/p2_4.jpg,photo/p
+
+2_5.jpg">
         <img class="main-photo" src="photo/p2_1.jpg" alt="Project 2">
         <div class="thumbnails">
           <img src="photo/p2_1.jpg" alt="">
@@ -147,7 +181,12 @@
         <p>Corporate branded truck with full wrap on all sides.</p>
       </div>
 
-      <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg,photo/p3_4.jpg,photo/p3_5.jpg">
+      <!-- Project 3 -->
+      <div class="project-card" data-
+
+images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg,photo/p3_4.jpg,photo/p
+
+3_5.jpg">
         <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
         <div class="thumbnails">
           <img src="photo/p3_1.jpg" alt="">
@@ -160,7 +199,12 @@
         <p>Creative design inspired by nature, all sides covered.</p>
       </div>
 
-      <div class="project-card" data-images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg,photo/p4_4.jpg,photo/p4_5.jpg">
+      <!-- Project 4 -->
+      <div class="project-card" data-
+
+images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg,photo/p4_4.jpg,photo/p
+
+4_5.jpg">
         <img class="main-photo" src="photo/p4_1.jpg" alt="Project 4">
         <div class="thumbnails">
           <img src="photo/p4_1.jpg" alt="">
@@ -173,7 +217,12 @@
         <p>Truck wrapped with abstract designs for eye-catching effect.</p>
       </div>
 
-      <div class="project-card" data-images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg,photo/p5_4.jpg,photo/p5_5.jpg">
+      <!-- Project 5 -->
+      <div class="project-card" data-
+
+images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg,photo/p5_4.jpg,photo/p
+
+5_5.jpg">
         <img class="main-photo" src="photo/p5_1.jpg" alt="Project 5">
         <div class="thumbnails">
           <img src="photo/p5_1.jpg" alt="">
@@ -186,7 +235,12 @@
         <p>Retro-inspired graphics covering the entire truck.</p>
       </div>
 
-      <div class="project-card" data-images="photo/p6_1.jpg,photo/p6_2.jpg,photo/p6_3.jpg,photo/p6_4.jpg,photo/p6_5.jpg">
+      <!-- Project 6 -->
+      <div class="project-card" data-
+
+images="photo/p6_1.jpg,photo/p6_2.jpg,photo/p6_3.jpg,photo/p6_4.jpg,photo/p
+
+6_5.jpg">
         <img class="main-photo" src="photo/p6_1.jpg" alt="Project 6">
         <div class="thumbnails">
           <img src="photo/p6_1.jpg" alt="">
@@ -199,8 +253,13 @@
         <p>Truck branded for a sports team, showing multiple angles.</p>
       </div>
 
-    
-     
+    </div>
+
+    <!-- Contacts -->
+    <div class="contacts">
+      <h2>Contacts</h2>
+      <p>Phone number: +37125538622</p>
+      <p>E-mail: metalhammers@inbox.lv</p>
     </div>
   </div>
 
@@ -215,19 +274,15 @@
   </div>
 
   <script>
-    // Change main photo on thumbnail click
     document.querySelectorAll('.project-card').forEach(card => {
       const mainPhoto = card.querySelector('.main-photo');
       const thumbs = card.querySelectorAll('.thumbnails img');
       thumbs.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-          mainPhoto.src = thumb.src;
-        });
-      });
+        thumb.addEventListener('click', () => { mainPhoto.src = thumb.src; 
 
-      mainPhoto.addEventListener('click', () => {
-        openModal(card);
+});
       });
+      mainPhoto.addEventListener('click', () => { openModal(card); });
     });
 
     const modal = document.getElementById('imageModal');
@@ -256,18 +311,9 @@
     closeBtn.onclick = () => { modal.style.display = 'none'; };
     prevBtn.onclick = () => { showImage(currentIndex - 1); };
     nextBtn.onclick = () => { showImage(currentIndex + 1); };
+    window.onclick = event => { if (event.target === modal) 
 
-    window.onclick = function(event) {
-      if (event.target === modal) modal.style.display = 'none';
-    };
+modal.style.display = 'none'; };
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
