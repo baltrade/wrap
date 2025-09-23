@@ -1,241 +1,221 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>HammerShop — Veikals / Grozs</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, sans-serif;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #000;
-  color: #fff;
-}
-h1 {
-  color: #e67e22;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.products-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.product-card {
-  border: 1px solid #333;
-  padding: 15px;
-  width: calc(33% - 20px);
-  box-sizing: border-box;
-  background-color: #111;
-}
-.product-card h3 { margin: 10px 0; font-size: 1rem; }
-.product-card .price { font-weight: bold; margin-bottom: 10px; color: #e67e22; }
-.product-card .add-btn {
-  display: inline-block; padding: 8px 12px;
-  background-color: #e67e22; color: white;
-  text-decoration: none; cursor: pointer; border-radius: 4px;
-}
-.product-card img {
-  max-width: 100%; height: auto; display: block; margin: 0 auto 10px;
-  cursor: pointer;
-  border: none;
-}
-.cart-area {
-  margin-top: 40px; border: 1px solid #888;
-  padding: 20px; overflow-x: auto; background-color: #111;
-}
-.cart-items { margin-bottom: 20px; }
-.simpleCart_items table {
-  width: 100%; border-collapse: collapse; margin-bottom: 15px;
-}
-.simpleCart_items th, .simpleCart_items td {
-  border: 1px solid #888; padding: 8px; text-align: center; word-break: break-word;
-}
-.simpleCart_items th { background-color: #222; }
-.simpleCart_items td.item-name { text-align: left; }
-.cart-total { font-size: 1.2em; font-weight: bold; color: #e67e22; }
-.empty-cart-btn { margin-top: 10px; color: #e67e22; cursor: pointer; display:inline-block; }
-.order-form {
-  margin-top: 30px; border: 1px solid #aaa; padding: 20px; background-color: #111;
-}
-.order-form label { display: block; margin-bottom: 10px; }
-.order-form input, .order-form textarea, .order-form select {
-  width: 100%; padding: 8px; margin-top: 5px; margin-bottom: 15px; box-sizing: border-box;
-  background-color: #222; color: #fff; border: 1px solid #e67e22;
-}
-.order-form button {
-  padding: 10px 20px; background-color: #e67e22; color: white; border: none; cursor: pointer;
-}
-@media (max-width: 900px) { .product-card { width: calc(50% - 20px); } }
-@media (max-width: 600px) { .product-card { width: 100%; } }
-.modal {
-  display: none; position: fixed; z-index: 9999; left: 0; top: 0;
-  width: 100%; height: 100%; background: rgba(0,0,0,0.6);
-  justify-content: center; align-items: center;
-}
-.modal-content {
-  background: #111; padding: 20px; max-width: 500px; width: 90%;
-  max-height: 90vh; overflow-y: auto; border-radius: 10px;
-  text-align: center; position: relative; color: #fff;
-}
-.modal-content img {
-  max-width: 100%; max-height: 250px; height: auto;
-  margin-bottom: 15px; object-fit: contain;
-  border: none;
-}
-.close-btn { position: absolute; right: 15px; top: 10px; font-size: 1.5rem; cursor: pointer; color: #e67e22; }
-.prev-btn, .next-btn {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(0,0,0,0.5); color: white; border: none;
-  font-size: 1.5rem; padding: 5px 10px; cursor: pointer; border-radius: 4px;
-}
-.prev-btn { left: 10px; } .next-btn { right: 10px; }
-.modal-add-btn { display: inline-block; margin-top: 15px; padding: 10px 16px;
-  background-color: #e67e22; color: white; border: none; cursor: pointer; border-radius: 6px; font-size: 1rem;
-}
-.modal-qty, .modal-size { padding: 6px; margin-top: 10px; font-size: 1rem; }
-.modal-qty { width: 80px; text-align: center; } .modal-size { width: 150px; }
-</style>
+  <meta charset="UTF-8">
+  <title>Truck Wrap Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    h1 { text-align: center; margin-bottom: 30px; }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .project-card {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      width: calc(33% - 20px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+    }
+    .main-photo {
+      max-width: 100%;
+      height: auto;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .thumbnails {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .thumbnails img {
+      width: 50px;
+      height: auto;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .project-card h3 { margin: 5px 0; font-size: 1rem; }
+    .project-card p { font-size: 0.9rem; color: #555; }
+    @media (max-width: 900px) { .project-card { width: calc(50% - 20px); } }
+    @media (max-width: 600px) { .project-card { width: 100%; } }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      position: relative;
+      margin: auto;
+      top: 50px;
+      max-width: 90%;
+      max-height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 4px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      padding: 0 10px;
+    }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Truck Wrap Gallery</h1>
+    <div class="gallery">
 
-<h1>HammerShop</h1>
-<div class="products-list" id="products-list">
-  <div class="product-card simpleCart_shelfItem">
-    <img src="PHOTO/hd-front.jpg" data-images="PHOTO/hd-front.jpg,PHOTO/hd-back.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
-    <h3 class="item_name">Krekls ar garām piedurknēm (001)</h3>
-    <div class="price"><span class="item_price">50.00</span> EUR</div>
-    <a href="javascript:;" class="add-btn">Pievienot grozam</a>
-    <div class="item-desc" style="display:none;">100% kokvilna</div>
+      <div class="project-card" data-images="photo/fura1_1.jpg,photo/fura1_2.jpg,photo/fura1_3.jpg">
+        <img class="main-photo" src="photo/fura1_1.jpg" alt="Project 1">
+        <div class="thumbnails">
+          <img src="photo/fura1_1.jpg" alt="">
+          <img src="photo/fura1_2.jpg" alt="">
+          <img src="photo/fura1_3.jpg" alt="">
+        </div>
+        <h3>Project 1: Urban Style Truck Wrap</h3>
+        <p>Full truck wrap with modern urban design, photos show multiple angles of the vehicle.</p>
+      </div>
+
+      <div class="project-card" data-images="photo/fura2_1.jpg,photo/fura2_2.jpg,photo/fura2_3.jpg,photo/fura2_4.jpg">
+        <img class="main-photo" src="photo/fura2_1.jpg" alt="Project 2">
+        <div class="thumbnails">
+          <img src="photo/fura2_1.jpg" alt="">
+          <img src="photo/fura2_2.jpg" alt="">
+          <img src="photo/fura2_3.jpg" alt="">
+          <img src="photo/fura2_4.jpg" alt="">
+        </div>
+        <h3>Project 2: Corporate Branding Truck</h3>
+        <p>Truck fully branded including sides and rear, shown from different angles.</p>
+      </div>
+
+      <div class="project-card" data-images="photo/fura3_1.jpg,photo/fura3_2.jpg">
+        <img class="main-photo" src="photo/fura3_1.jpg" alt="Project 3">
+        <div class="thumbnails">
+          <img src="photo/fura3_1.jpg" alt="">
+          <img src="photo/fura3_2.jpg" alt="">
+        </div>
+        <h3>Project 3: Nature Inspired Design</h3>
+        <p>Creative nature-themed truck wrap, photos show sides and details of the wrap.</p>
+      </div>
+
+    </div>
   </div>
-  <div class="product-card simpleCart_shelfItem">
-    <img src="PHOTO/hd1-front.jpg" data-images="PHOTO/hd1-front.jpg,PHOTO/hd1-back.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
-    <h3 class="item_name">Krekls ar garām piedurknēm (002)</h3>
-    <div class="price"><span class="item_price">35.00</span> EUR</div>
-    <a href="javascript:;" class="add-btn">Pievienot grozam</a>
-    <div class="item-desc" style="display:none;">100% kokvilna</div>
+
+  <!-- Modal -->
+  <div class="modal" id="imageModal">
+    <span class="close-btn">&times;</span>
+    <span class="nav-btn prev-btn">&#10094;</span>
+    <span class="nav-btn next-btn">&#10095;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="">
+    </div>
   </div>
-  <div class="product-card simpleCart_shelfItem">
-    <img src="PHOTO/hd3-front.jpg" data-images="PHOTO/hd3-front.jpg,PHOTO/hd3-back.jpg" alt="Krekls ar garām piedurknēm" class="product-img">
-    <h3 class="item_name">Krekls ar garām piedurknēm (003)</h3>
-    <div class="price"><span class="item_price">30.00</span> EUR</div>
-    <a href="javascript:;" class="add-btn">Pievienot grozam</a>
-    <div class="item-desc" style="display:none;">100% kokvilna</div>
-  </div>
-  <div class="product-card simpleCart_shelfItem">
-    <img src="PHOTO/hd2-front.jpg" data-images="PHOTO/hd2-front.jpg,PHOTO/hd2-back.jpg" alt="T-Krekls" class="product-img">
-    <h3 class="item_name">T-Krekls (004)</h3>
-    <div class="price"><span class="item_price">39.00</span> EUR</div>
-    <a href="javascript:;" class="add-btn">Pievienot grozam</a>
-    <div class="item-desc" style="display:none;">100% kokvilna</div>
-  </div>
-</div>
 
-<div class="cart-area">
-<h2>Grozs</h2>
-<div class="cart-items"><div class="simpleCart_items"></div></div>
-<div class="cart-total">Kopā: <span class="simpleCart_total"></span> EUR</div>
-<div><a href="javascript:;" class="empty-cart-btn simpleCart_empty">Iztīrīt grozu</a></div>
-</div>
+  <script>
+    // Change main photo on thumbnail click
+    document.querySelectorAll('.project-card').forEach(card => {
+      const mainPhoto = card.querySelector('.main-photo');
+      const thumbs = card.querySelectorAll('.thumbnails img');
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          mainPhoto.src = thumb.src;
+        });
+      });
 
-<div class="order-form">
-<h2>Noformēt pasūtījumu</h2>
-<form id="orderForm" action="https://api.web3forms.com/submit" method="POST">
-<input type="hidden" name="access_key" value="c49dd88b-948d-4903-9295-d9ab1c7b8afc">
-<input type="hidden" name="cart_contents" id="cart_contents" value="">
-<label>Jūsu vārds:<input type="text" name="name" required></label>
-<label>E-pasts:<input type="email" name="email" required></label>
-<label>Telefons:<input type="text" name="phone"></label>
-<label>Piegādes adrese:<input type="text" name="address" required></label>
-<label>Komentāri:<textarea name="message" rows="4"></textarea></label>
-<button type="submit">Pasūtīt</button>
-</form>
-</div>
+      // Open modal on main photo click
+      mainPhoto.addEventListener('click', () => {
+        openModal(card);
+      });
+    });
 
-<div id="productModal" class="modal" aria-hidden="true">
-<div class="modal-content">
-<span class="close-btn">&times;</span>
-<button class="prev-btn">&lt;</button>
-<img id="modalImage" src="" alt="">
-<button class="next-btn">&gt;</button>
-<h3 id="modalTitle"></h3>
-<p id="modalDesc"></p>
-<label>Daudzums:<input type="number" id="modalQty" class="modal-qty" value="1" min="1"></label>
-<label>Izmērs:<select id="modalSize" class="modal-size">
-<option value="S">S</option><option value="M">M</option><option value="L">L</option>
-<option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option>
-</select></label>
-<button class="modal-add-btn" id="modalAddBtn">Pievienot grozam</button>
-</div>
-</div>
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.close-btn');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/simplecartjs/3.0.5/simplecart.min.js"></script>
-<script>
-$(function(){
-  simpleCart({
-    cartStyle:"table",
-    cartColumns:[
-      { view:function(item){ return "<img src='"+item.get("photo")+"' width='50'>"; }, label:"Attēls" },
-      { attr:"name", label:"Prece", className:"item-name" },
-      { attr:"size", label:"Izmērs" },
-      { attr:"quantity", label:"Daudzums" },
-      { attr:"price", label:"Cena" },
-      { view:"remove", text:"Dzēst" }
-    ],
-    currency:"EUR"
-  });
+    let currentImages = [];
+    let currentIndex = 0;
 
-  let modalProduct={}, modalImages=[], currentImageIndex=0;
-  function openModal(card){
-    let title=card.find('.item_name').text();
-    let desc=card.find('.item-desc').text();
-    let imgList=(card.find('.product-img').data('images')||card.find('.product-img').attr('src')).split(',');
-    let price=parseFloat(card.find('.item_price').text())||0;
-    modalProduct={name:title, price:price, photo:imgList[0]};
-    modalImages=imgList; currentImageIndex=0;
-    $('#modalTitle').text(title); $('#modalDesc').text(desc);
-    $('#modalImage').attr('src', modalImages[0]);
-    $('#modalQty').val(1); $('#modalSize').val("M");
-    $('#productModal').fadeIn().attr('aria-hidden','false');
-  }
+    function openModal(card) {
+      currentImages = card.dataset.images.split(',');
+      currentIndex = 0;
+      modalImg.src = currentImages[currentIndex];
+      modal.style.display = 'block';
+    }
 
-  $('.product-img, .add-btn').on('click', function(e){ e.preventDefault(); openModal($(this).closest('.product-card')); });
-  $('.next-btn').on('click', function(){ currentImageIndex=(currentImageIndex+1)%modalImages.length; $('#modalImage').attr('src', modalImages
+    function showImage(index) {
+      if(index < 0) index = currentImages.length - 1;
+      if(index >= currentImages.length) index = 0;
+      currentIndex = index;
+      modalImg.src = currentImages[currentIndex];
+    }
 
-[currentImageIndex]); });
-  $('.prev-btn').on('click', function(){ currentImageIndex=(currentImageIndex-1+modalImages.length)%modalImages.length; $('#modalImage').attr('src', 
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    prevBtn.onclick = () => { showImage(currentIndex - 1); };
+    nextBtn.onclick = () => { showImage(currentIndex + 1); };
 
-modalImages[currentImageIndex]); });
-
-  $('#modalAddBtn').on('click', function(){
-    let qty=parseInt($('#modalQty').val())||1, size=$('#modalSize').val();
-    simpleCart.add({ name:modalProduct.name, price:modalProduct.price, quantity:qty, size:size, photo:modalProduct.photo });
-    alert(modalProduct.name+" ("+size+") × "+qty+" pievienots grozam!");
-    $('#productModal').fadeOut().attr('aria-hidden','true');
-  });
-
-  $('.close-btn, #productModal').on('click', function(e){ if(e.target===this) $('#productModal').fadeOut().attr('aria-hidden','true'); });
-
-  $('#orderForm').on('submit', function(e){
-    let items=simpleCart.items();
-    if(!items||items.length===0){ alert("Grozs ir tukšs"); e.preventDefault(); return false; }
-    let summaryArr=[];
-    items.forEach(it=> summaryArr.push(it.get('quantity')+' × '+it.get('name')+' ('+(it.get('size')||"-")+', '+parseFloat(it.get('price')).toFixed(2)+' 
-
-EUR)'));
-    $('#cart_contents').val(summaryArr.join('\n')+"\nKopā: "+parseFloat(simpleCart.total()).toFixed(2)+" EUR");
-    setTimeout(()=>simpleCart.empty(),500);
-  });
-});
-</script>
+    // Close modal on outside click
+    window.onclick = function(event) {
+      if (event.target === modal) modal.style.display = 'none';
+    };
+  </script>
 </body>
 </html>
-
-
 
 
 
