@@ -73,10 +73,10 @@
     /* Hero Banner */
     .hero {
       position: relative;
-      height: 60vh; /* Уменьшена высота */
+      height: 100vh;
       background: 
         linear-gradient(var(--overlay), var(--overlay)),
-        url('img/my-truck.jpg') center/contain no-repeat; /* Полное отображение изображения */
+        url('img/my-truck.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -112,11 +112,11 @@
     .gallery-section {
       padding: 80px 40px 100px 40px;
       background: #111;
-      text-align: center;
+      text-align: left;
     }
 
     .section-title {
-      font-family: 'Arial', 'Arial', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 2.0rem;
       color: #ffffff;
       margin-bottom: 20px;
@@ -128,8 +128,7 @@
     .section-description {
       font-size: 1.2rem;
       color: #ccc;
-      max-width: 900px;
-      margin: 0 auto 60px auto;
+      margin: 0 0 60px 0;
       line-height: 1.6;
     }
 
@@ -137,8 +136,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
-      max-width: 1400px;
-      margin: 0 auto;
+      width: 100%;
     }
     .project-card {
       background: #1a1a1a;
@@ -317,6 +315,7 @@
       .gallery {
         grid-template-columns: 1fr;
         gap: 20px;
+        width: 100%;
       }
       .main-photo {
         height: 220px;
@@ -340,9 +339,20 @@
         line-height: 1.2;
       }
       .hero-content p {
-        font-size: 1.4rem;
+        font-size: 1rem;
       }
-      .section-title { font-size: 1.6rem; }
+      .gallery-section {
+        padding: 60px 20px 70px 20px;
+        text-align: left;
+      }
+      .section-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.6rem;
+      }
+      .section-description {
+        font-size: 1.1rem;
+        margin: 0 0 60px 0;
+      }
       .footer {
         padding: 15px;
       }
@@ -375,8 +385,7 @@
     <h2 class="section-title">MŪSU DARBI</h2>
     <p class="section-description">
       Mēs piedāvājam pielāgotus dizaina risinājumus, kas precīzi atbilst tava uzņēmuma identitātei.
-      Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.Katram klientam pievēršam individuālu uzmanību – sākot no idejas un skices līdz gatavam rezultātam uz ceļa.
-      Mūsu mērķis ir radīt dizainu, kas ne tikai izskatās lieliski, bet arī strādā kā efektīva reklāma tavā ikdienas kustībā.
+      Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.
     </p>
 
     <div class="gallery">
@@ -553,5 +562,3 @@
   </script>
 </body>
 </html>
-
-
