@@ -20,12 +20,12 @@
       background: #000;
       color: var(--text);
       overflow-x: hidden;
-      margin-top: 60px; /* Отступ для фиксированной шапки в десктопной версии */
+      margin-top: 60px;
     }
 
     /* Header */
     header {
-      position: fixed; /* Фиксированная шапка */
+      position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 20px 40px;
@@ -130,9 +130,13 @@
     .section-description {
       font-size: 1.2rem;
       color: #ccc;
-      margin: 0 0 40px 0;
+      margin: 0 0 10px 0; /* Уменьшенный отступ снизу для пунктов списка */
       line-height: 1.6;
       text-align: justify;
+    }
+    .section-description .checkmark {
+      color: #ccc; /* Тот же цвет, что у текста */
+      margin-right: 8px;
     }
 
     .gallery {
@@ -140,6 +144,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
       width: 100%;
+      margin-top: 40px; /* Отступ перед фотографиями */
     }
     .project-card {
       background: #252525;
@@ -267,11 +272,11 @@
       .hero-content p { font-size: 1.6rem; }
       .gallery-section { padding: 30px 20px 50px 20px; }
       .section-title { font-size: 1.8rem; }
-      .section-description { font-size: 1.1rem; margin-bottom: 30px; }
+      .section-description { font-size: 1.1rem; margin-bottom: 10px; }
     }
     @media (max-width: 576px) {
       body {
-        margin-top: 50px; /* Отступ для фиксированной шапки в мобильной версии */
+        margin-top: 50px;
       }
       header {
         flex-direction: row;
@@ -290,6 +295,7 @@
         grid-template-columns: 1fr;
         gap: 20px;
         width: 100%;
+        margin-top: 25px; /* Отступ перед фотографиями в мобильной версии */
       }
       .project-card {
         min-height: 300px;
@@ -329,7 +335,11 @@
       .section-description {
         font-size: 0.9rem;
         text-align: justify;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
+      }
+      .section-description .checkmark {
+        color: #ccc;
+        margin-right: 8px;
       }
       .footer {
         padding: 15px;
@@ -339,7 +349,7 @@
         font-size: 0.9rem;
       }
       .logo {
-        font-size: 1.2rem; /* Размер логотипа в мобильной версии */
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -364,58 +374,56 @@
 
   <!-- Gallery Section -->
   <section class="gallery-section">
-    <h2 class="section-title">Fotogalerija</h2>
     <p class="section-description">
       Mēs piedāvājam pielāgotus dizaina risinājumus, kas precīzi atbilst tava uzņēmuma identitātei.
       Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.
-      <p>  🎨 Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</p>
-
-  <p>🖨️ Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</p>
-
-  <p>🔧 Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</p>
-
-  <p>🛡️ Aizsardzība – plēve pasargā virsmu no UV stariem, sāls un skrāpējumiem. </p>
+    </p>
+    <p class="section-description">
+      <span class="checkmark">✔</span> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.
+    </p>
+    <p class="section-description">
+      <span class="checkmark">✔</span> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.
+    </p>
+    <p class="section-description">
+      <span class="checkmark">✔</span> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.
+    </p>
+    <p class="section-description">
+      <span class="checkmark">✔</span> Aizsardzība – plēve pasargā virsmu no UV stariem, sāls un skrāpējumiem.
+    </p>
+    <h2 class="section-title">Fotogalerija</h2>
     <div class="gallery">
       <!-- Project 1 -->
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_1.jpg" alt="Project 1">
       </div>
-
       <!-- Project 2 -->
       <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
         <img class="main-photo" src="photo/p2_1.jpg" alt="Project 2">
       </div>
-
       <!-- Project 3 -->
       <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
         <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
       </div>
-
       <!-- Project 4 -->
       <div class="project-card" data-images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg">
         <img class="main-photo" src="photo/p4_1.jpg" alt="Project 4">
       </div>
-
       <!-- Project 5 -->
       <div class="project-card" data-images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg">
         <img class="main-photo" src="photo/p5_1.jpg" alt="Project 5">
       </div>
-
       <!-- Project 6 -->
       <div class="project-card" data-images="photo/p6_1.jpg,photo/p6_2.jpg">
         <img class="main-photo" src="photo/p6_1.jpg" alt="Project 6">
       </div>
-
       <!-- Project 7 -->
       <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
         <img class="main-photo" src="photo/p9_1.jpg" alt="Project 7">
       </div>
-
       <!-- Project 8 -->
       <div class="project-card" data-images="photo/p8_1.jpg,photo/p8_2.jpg">
         <img class="main-photo" src="photo/p8_1.jpg" alt="Project 8">
       </div>
-
       <!-- Project 9 -->
       <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
         <img class="main-photo" src="photo/p7_1.jpg" alt="Project 9">
@@ -491,13 +499,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
