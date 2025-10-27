@@ -115,14 +115,6 @@
       text-align: left;
     }
 
-    .gallery-section .intro-block {
-      background: rgba(255, 107, 0, 0.1);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      margin-bottom: 40px;
-    }
-
     .section-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 2.0rem;
@@ -137,7 +129,7 @@
     .section-description {
       font-size: 1.2rem;
       color: #ccc;
-      margin: 0 0 0 0;
+      margin: 0 0 40px 0;
       line-height: 1.6;
       text-align: justify;
     }
@@ -305,12 +297,8 @@
       .hero-content h1 { font-size: 2.8rem; }
       .hero-content p { font-size: 1.2rem; }
       .gallery-section { padding: 30px 20px 50px 20px; }
-      .gallery-section .intro-block {
-        padding: 15px;
-        margin-bottom: 30px;
-      }
       .section-title { font-size: 1.8rem; }
-      .section-description { font-size: 1.1rem; }
+      .section-description { font-size: 1.1rem; margin-bottom: 30px; }
     }
     @media (max-width: 576px) {
       header {
@@ -358,10 +346,6 @@
       .gallery-section {
         padding: 30px 20px 50px 20px;
       }
-      .gallery-section .intro-block {
-        padding: 12px;
-        margin-bottom: 25px;
-      }
       .section-title {
         font-family: 'Montserrat', sans-serif;
         font-size: 1.6rem;
@@ -369,6 +353,7 @@
       .section-description {
         font-size: 1.1rem;
         text-align: justify;
+        margin-bottom: 25px;
       }
       .footer {
         padding: 15px;
@@ -399,13 +384,11 @@
 
   <!-- Gallery Section -->
   <section class="gallery-section">
-    <div class="intro-block">
-      <h2 class="section-title">MŪSU DARBI</h2>
-      <p class="section-description">
-        Mēs piedāvājam pielāgotus dizaina risinājumus, kas precīzi atbilst tava uzņēmuma identitātei.
-        Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.
-      </p>
-    </div>
+    <h2 class="section-title">MŪSU DARBI</h2>
+    <p class="section-description">
+      Mēs piedāvājam pielāgotus dizaina risinājumus, kas precīzi atbilst tava uzņēmuma identitātei.
+      Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.
+    </p>
     <div class="gallery">
       <!-- Project 1 -->
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
