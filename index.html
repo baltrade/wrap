@@ -112,30 +112,31 @@
     /* Gallery Section */
     .gallery-section {
       padding: 40px 40px 60px 40px;
-      background: #111;
+      background: #fff;
       text-align: left;
     }
 
     .section-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.0rem;
-      color: #ffffff;
+      font-size: 2.4rem;
+      color: #333;
       margin-bottom: 15px;
+      margin-top: 60px; /* Отступ перед "Fotogalerija" равен отступу перед .gallery */
       letter-spacing: 1px;
-      font-weight: normal;
+      font-weight: 700; /* Жирный текст */
       text-transform: uppercase;
       text-align: center;
     }
 
     .section-description {
       font-size: 1.2rem;
-      color: #ccc;
-      margin: 0 0 10px 0; /* Уменьшенный отступ снизу для пунктов списка */
+      color: #333;
+      margin: 0 0 10px 0;
       line-height: 1.6;
       text-align: justify;
     }
     .section-description .checkmark {
-      color: #ccc; /* Тот же цвет, что у текста */
+      color: var(--orange); /* Оранжевый цвет галочек */
       margin-right: 8px;
     }
 
@@ -144,7 +145,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
       width: 100%;
-      margin-top: 40px; /* Отступ перед фотографиями */
+      margin-top: 60px;
     }
     .project-card {
       background: #252525;
@@ -258,7 +259,7 @@
       .gallery { grid-template-columns: repeat(2, 1fr); }
       .hero-content h1 { font-size: 3.2rem; }
       .hero-content p { font-size: 1.8rem; }
-      .section-title { font-size: 2rem; }
+      .section-title { font-size: 2.4rem; color: #333; }
     }
     @media (max-width: 768px) {
       header { 
@@ -271,7 +272,7 @@
       .hero-content h1 { font-size: 2.8rem; }
       .hero-content p { font-size: 1.6rem; }
       .gallery-section { padding: 30px 20px 50px 20px; }
-      .section-title { font-size: 1.8rem; }
+      .section-title { font-size: 2rem; color: #333; }
       .section-description { font-size: 1.1rem; margin-bottom: 10px; }
     }
     @media (max-width: 576px) {
@@ -295,7 +296,7 @@
         grid-template-columns: 1fr;
         gap: 20px;
         width: 100%;
-        margin-top: 25px; /* Отступ перед фотографиями в мобильной версии */
+        margin-top: 40px;
       }
       .project-card {
         min-height: 300px;
@@ -325,20 +326,23 @@
       }
       .gallery-section {
         padding: 20px 20px 50px 20px;
-        background: #111;
+        background: #fff;
       }
       .section-title {
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.2rem;
-        margin-top: 0;
+        font-size: 1.4rem;
+        color: #333;
+        margin-top: 40px; /* Отступ перед "Fotogalerija" равен отступу перед .gallery */
+        font-weight: 700; /* Жирный текст */
       }
       .section-description {
         font-size: 0.9rem;
+        color: #333;
         text-align: justify;
         margin-bottom: 10px;
       }
       .section-description .checkmark {
-        color: #ccc;
+        color: var(--orange); /* Оранжевый цвет галочек */
         margin-right: 8px;
       }
       .footer {
