@@ -141,7 +141,7 @@
       width: 100%;
     }
     .project-card {
-      background: #1a1a1a;
+      background: #252525;
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 12px 35px rgba(0,0,0,0.7);
@@ -179,7 +179,7 @@
     .card-body {
       padding: 22px;
       text-align: center;
-      background: #1a1a1a;
+      background: #252525;
     }
     .project-card h3 {
       font-family: 'Arial Black', 'Arial', sans-serif;
@@ -190,24 +190,7 @@
       font-weight: 900;
     }
     .thumbnails {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .thumbnails img {
-      width: 62px;
-      height: 62px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid #444;
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    .thumbnails img:hover {
-      border-color: var(--orange);
-      transform: scale(1.18);
-      box-shadow: 0 0 15px rgba(255,107,0,0.4);
+      display: none;
     }
 
     /* Modal */
@@ -224,7 +207,7 @@
     }
     .modal-content {
       max-width: 92%;
-      max-height: 92%;
+      max-height: 80%;
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 0 60px rgba(255,107,0,0.25);
@@ -232,8 +215,29 @@
     }
     .modal img {
       width: 100%;
-      max-height: 86vh;
+      max-height: 100%;
       object-fit: contain;
+    }
+    .modal-thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .modal-thumbnails img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #444;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .modal-thumbnails img:hover,
+    .modal-thumbnails img.active {
+      border-color: var(--orange);
+      transform: scale(1.1);
     }
     .close-btn, .nav-btn {
       position: absolute;
@@ -322,10 +326,6 @@
       .main-photo {
         height: 220px;
       }
-      .thumbnails img {
-        width: 60px;
-        height: 60px;
-      }
       .hero {
         height: 40vh;
         margin-top: 50px;
@@ -354,7 +354,7 @@
         margin-top: 0;
       }
       .section-description {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         text-align: justify;
         margin-bottom: 25px;
       }
@@ -503,6 +503,7 @@
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
+    <div class="modal-thumbnails"></div>
   </div>
 
   <!-- Footer -->
@@ -515,6 +516,7 @@
   <script>
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
+    const modalThumbs = document.querySelector('.modal-thumbnails');
     const closeBtn = document.querySelector('.close-btn');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
@@ -522,24 +524,41 @@
 
     document.querySelectorAll('.project-card').forEach(card => {
       const main = card.querySelector('.main-photo');
-      const thumbs = card.querySelectorAll('.thumbnails img');
       const images = card.dataset.images.split(',');
 
       main.onclick = (e) => {
         e.preventDefault();
         openModal(images, 0);
       };
-      thumbs.forEach((t, i) => t.onclick = (e) => {
-        e.preventDefault();
-        openModal(images, i);
-      });
     });
 
     function openModal(imgs, idx) {
-      currentImages = imgs; currentIndex = idx;
+      currentImages = imgs;
+      currentIndex = idx;
       modalImg.src = imgs[idx];
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+
+      // Очистка и создание миниатюр
+      modalThumbs.innerHTML = '';
+      imgs.forEach((src, i) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.className = i === idx ? 'active' : '';
+        thumb.onclick = () => {
+          currentIndex = i;
+          modalImg.src = src;
+          updateThumbnails();
+        };
+        modalThumbs.appendChild(thumb);
+      });
+    }
+
+    function updateThumbnails() {
+      const thumbs = modalThumbs.querySelectorAll('img');
+      thumbs.forEach((thumb, i) => {
+        thumb.className = i === currentIndex ? 'active' : '';
+      });
     }
 
     function showImg(i) {
@@ -547,6 +566,7 @@
       if (i >= currentImages.length) i = 0;
       currentIndex = i;
       modalImg.src = currentImages[i];
+      updateThumbnails();
     }
 
     closeBtn.onclick = () => { 
@@ -567,5 +587,3 @@
   </script>
 </body>
 </html>
-
-
