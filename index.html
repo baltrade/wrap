@@ -20,11 +20,12 @@
       background: #000;
       color: var(--text);
       overflow-x: hidden;
+      margin-top: 60px; /* Отступ для фиксированной шапки в десктопной версии */
     }
 
     /* Header */
     header {
-      position: absolute;
+      position: fixed; /* Фиксированная шапка */
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 20px 40px;
@@ -148,8 +149,8 @@
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       border: 1px solid #333;
       cursor: pointer;
-      aspect-ratio: 3/4; /* Вертикальная ориентация */
-      min-height: 400px; /* Минимальная высота для контейнера */
+      aspect-ratio: 3/4;
+      min-height: 400px;
     }
     .project-card:hover {
       transform: translateY(-15px);
@@ -168,11 +169,11 @@
 
     .main-photo {
       width: 100%;
-      height: auto; /* Пропорциональное масштабирование */
-      object-fit: contain; /* Не обрезает фото */
+      height: auto;
+      object-fit: contain;
       transition: transform 0.4s ease;
       user-select: none;
-      background: #252525; /* Фон для прозрачных участков */
+      background: #252525;
     }
     .main-photo:hover {
       transform: scale(1.04);
@@ -269,6 +270,9 @@
       .section-description { font-size: 1.1rem; margin-bottom: 30px; }
     }
     @media (max-width: 576px) {
+      body {
+        margin-top: 50px; /* Отступ для фиксированной шапки в мобильной версии */
+      }
       header {
         flex-direction: row;
         justify-content: space-between;
@@ -288,12 +292,12 @@
         width: 100%;
       }
       .project-card {
-        min-height: 300px; /* Минимальная высота для контейнера */
+        min-height: 300px;
       }
       .main-photo {
         width: 100%;
-        height: auto; /* Пропорциональное масштабирование */
-        object-fit: contain; /* Без обрезки */
+        height: auto;
+        object-fit: contain;
       }
       .hero {
         height: 40vh;
@@ -335,8 +339,8 @@
         font-size: 0.9rem;
       }
       .logo {
-    font-size: 1.0rem;
-    }
+        font-size: 1.6rem; /* Размер логотипа в мобильной версии */
+      }
     }
   </style>
 </head>
@@ -360,7 +364,7 @@
 
   <!-- Gallery Section -->
   <section class="gallery-section">
-    <h2 class="section-title">Fotogalerija</h2>
+    <h2 class="section-title">MŪSU DARBI</h2>
     <p class="section-description">
       Mēs piedāvājam pielāgotus dizaina risinājumus, kas precīzi atbilst tava uzņēmuma identitātei.
       Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.
@@ -397,8 +401,8 @@
       </div>
 
       <!-- Project 7 -->
-      <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
-        <img class="main-photo" src="photo/p9_1.jpg" alt="Project 7">
+      <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
+        <img class="main-photo" src="photo/p7_1.jpg" alt="Project 7">
       </div>
 
       <!-- Project 8 -->
@@ -407,8 +411,8 @@
       </div>
 
       <!-- Project 9 -->
-      <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
-        <img class="main-photo" src="photo/p7_1.jpg" alt="Project 9">
+      <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
+        <img class="main-photo" src="photo/p9_1.jpg" alt="Project 9">
       </div>
     </div>
   </section>
@@ -481,6 +485,3 @@
   </script>
 </body>
 </html>
-
-
-
