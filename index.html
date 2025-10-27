@@ -108,7 +108,7 @@
       margin: 0 auto;
     }
 
-    /* Gallery Section — обновлённый заголовок */
+    /* Gallery Section */
     .gallery-section {
       padding: 80px 40px 100px 40px;
       background: #111;
@@ -117,11 +117,11 @@
 
     .section-title {
       font-family: 'Arial', 'Arial', sans-serif;
-      font-size: 2.0rem; /* МЕНЬШЕ */
+      font-size: 2.0rem;
       color: #ffffff;
       margin-bottom: 20px;
       letter-spacing: 1px;
-      font-weight: normal; /* УБРАН ЖИРНЫЙ */
+      font-weight: normal;
       text-transform: uppercase;
     }
 
@@ -155,7 +155,6 @@
       border-color: var(--orange);
     }
 
-    /* ПОЛНОСТЬЮ УБРАНА ПОДСВЕТКА ПРИ КЛИКЕ */
     .main-photo,
     .thumbnails img,
     .project-card,
@@ -260,6 +259,26 @@
     .prev-btn { left: 20px; }
     .next-btn { right: 20px; }
 
+    /* Footer styling */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: #111;
+      border-top: 1px solid rgba(255, 107, 0, 0.2);
+    }
+    .footer .contact {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .footer .contact a {
+      font-size: 1rem;
+      color: #ddd;
+    }
+    .footer .contact a:hover {
+      color: var(--orange);
+    }
+
     /* Responsive */
     @media (max-width: 992px) {
       .gallery { grid-template-columns: repeat(2, 1fr); }
@@ -282,11 +301,47 @@
       .section-description { font-size: 1.1rem; }
     }
     @media (max-width: 576px) {
-      .gallery { grid-template-columns: 1fr 1fr; gap: 22px; }
-      .main-photo { height: 190px; }
-      .thumbnails img { width: 50px; height: 50px; }
-      .hero-content h1 { font-size: 2.3rem; }
+      header {
+        flex-direction: row; /* Row layout for logo and phone */
+        justify-content: space-between; /* Logo left, phone right */
+        align-items: center;
+        padding: 15px 20px;
+      }
+      .contact {
+        flex-direction: row; /* Keep phone number in row */
+        gap: 0;
+      }
+      .contact a {
+        font-size: 0.9rem; /* Smaller font for mobile */
+      }
+      .gallery {
+        grid-template-columns: 1fr; /* One column */
+        gap: 20px;
+      }
+      .main-photo {
+        height: 220px; /* Adjusted for better visibility */
+      }
+      .thumbnails img {
+        width: 60px;
+        height: 60px; /* Slightly larger thumbnails */
+      }
+      .hero-content {
+        padding: 0 15px;
+      }
+      .hero-content h1 {
+        font-size: 2rem; /* Adjusted for readability */
+        line-height: 1.2;
+      }
+      .hero-content p {
+        font-size: 1.1rem;
+      }
       .section-title { font-size: 1.6rem; }
+      .footer {
+        padding: 15px;
+      }
+      .footer .contact a {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -297,7 +352,6 @@
     <div class="logo">HAMMER<span class="wrap">WRAP</span></div>
     <div class="contact">
       <a href="tel:+37125538622"><i class="fas fa-phone"></i> +371 255 386 22</a>
-      <a href="mailto:metalhammers@inbox.lv"><i class="fas fa-envelope"></i> metalhammers@inbox.lv</a>
     </div>
   </header>
 
@@ -309,7 +363,7 @@
     </div>
   </section>
 
-  <!-- Gallery Section — обновлённый заголовок -->
+  <!-- Gallery Section -->
   <section class="gallery-section">
     <h2 class="section-title">MŪSU DARBI</h2>
     <p class="section-description">
@@ -318,12 +372,11 @@
     </p>
 
     <div class="gallery">
-
       <!-- Project 1 -->
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_1.jpg" alt="Project 1">
         <div class="card-body">
-         <h1>Projekts 1</h1>
+          <h3>Projekts 1</h3>
           <div class="thumbnails">
             <img src="photo/p1_1.jpg"><img src="photo/p1_2.jpg"><img src="photo/p1_3.jpg"><img src="photo/p1_4.jpg">
           </div>
@@ -334,7 +387,7 @@
       <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
         <img class="main-photo" src="photo/p2_1.jpg" alt="Project 2">
         <div class="card-body">
-          <h1>Projekts 2</h1>
+          <h3>Projekts 2</h3>
           <div class="thumbnails">
             <img src="photo/p2_1.jpg"><img src="photo/p2_2.jpg"><img src="photo/p2_3.jpg">
           </div>
@@ -345,7 +398,7 @@
       <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
         <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
         <div class="card-body">
-         <h1>Projekts 3</h1>
+          <h3>Projekts 3</h3>
           <div class="thumbnails">
             <img src="photo/p3_1.jpg"><img src="photo/p3_2.jpg"><img src="photo/p3_3.jpg">
           </div>
@@ -356,7 +409,7 @@
       <div class="project-card" data-images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg">
         <img class="main-photo" src="photo/p4_1.jpg" alt="Project 4">
         <div class="card-body">
-          <h1>Projekts 4</h1>
+          <h3>Projekts 4</h3>
           <div class="thumbnails">
             <img src="photo/p4_1.jpg"><img src="photo/p4_2.jpg"><img src="photo/p4_3.jpg">
           </div>
@@ -367,7 +420,7 @@
       <div class="project-card" data-images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg">
         <img class="main-photo" src="photo/p5_1.jpg" alt="Project 5">
         <div class="card-body">
-          <h1>Projekts 5</h1>
+          <h3>Projekts 5</h3>
           <div class="thumbnails">
             <img src="photo/p5_1.jpg"><img src="photo/p5_2.jpg"><img src="photo/p5_3.jpg">
           </div>
@@ -378,7 +431,7 @@
       <div class="project-card" data-images="photo/p6_1.jpg,photo/p6_2.jpg">
         <img class="main-photo" src="photo/p6_1.jpg" alt="Project 6">
         <div class="card-body">
-          <h1>Projekts 6</h1>
+          <h3>Projekts 6</h3>
           <div class="thumbnails">
             <img src="photo/p6_1.jpg"><img src="photo/p6_2.jpg">
           </div>
@@ -389,7 +442,7 @@
       <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
         <img class="main-photo" src="photo/p7_1.jpg" alt="Project 7">
         <div class="card-body">
-          <h1>Projekts 7</h1>
+          <h3>Projekts 7</h3>
           <div class="thumbnails">
             <img src="photo/p7_1.jpg"><img src="photo/p7_2.jpg">
           </div>
@@ -400,7 +453,7 @@
       <div class="project-card" data-images="photo/p8_1.jpg,photo/p8_2.jpg">
         <img class="main-photo" src="photo/p8_1.jpg" alt="Project 8">
         <div class="card-body">
-          <h1>Projekts 8</h1>
+          <h3>Projekts 8</h3>
           <div class="thumbnails">
             <img src="photo/p8_1.jpg"><img src="photo/p8_2.jpg">
           </div>
@@ -411,25 +464,31 @@
       <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
         <img class="main-photo" src="photo/p9_1.jpg" alt="Project 9">
         <div class="card-body">
-          <h1>Projekts 9</h1>
+          <h3>Projekts 9</h3>
           <div class="thumbnails">
             <img src="photo/p9_1.jpg"><img src="photo/p9_2.jpg">
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- Modal -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-    <span class="nav-btn prev-btn">Left Arrow</span>
-    <span class="nav-btn next-btn">Right Arrow</span>
+    <span class="nav-btn prev-btn">←</span>
+    <span class="nav-btn next-btn">→</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="contact">
+      <a href="mailto:metalhammers@inbox.lv"><i class="fas fa-envelope"></i> metalhammers@inbox.lv</a>
+    </div>
+  </footer>
 
   <script>
     const modal = document.getElementById('imageModal');
