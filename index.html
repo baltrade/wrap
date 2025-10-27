@@ -73,10 +73,10 @@
     /* Hero Banner */
     .hero {
       position: relative;
-      height: 100vh;
+      height: 60vh; /* Уменьшена высота */
       background: 
         linear-gradient(var(--overlay), var(--overlay)),
-        url('img/my-truck.jpg') center/cover no-repeat;
+        url('img/my-truck.jpg') center/contain no-repeat; /* Полное отображение изображения */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -302,38 +302,45 @@
     }
     @media (max-width: 576px) {
       header {
-        flex-direction: row; /* Row layout for logo and phone */
-        justify-content: space-between; /* Logo left, phone right */
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         padding: 15px 20px;
       }
       .contact {
-        flex-direction: row; /* Keep phone number in row */
+        flex-direction: row;
         gap: 0;
       }
       .contact a {
-        font-size: 0.9rem; /* Smaller font for mobile */
+        font-size: 0.9rem;
       }
       .gallery {
-        grid-template-columns: 1fr; /* One column */
+        grid-template-columns: 1fr;
         gap: 20px;
       }
       .main-photo {
-        height: 220px; /* Adjusted for better visibility */
+        height: 220px;
       }
       .thumbnails img {
         width: 60px;
-        height: 60px; /* Slightly larger thumbnails */
+        height: 60px;
+      }
+      .hero {
+        height: 50vh;
+        background: 
+          linear-gradient(var(--overlay), var(--overlay)),
+          url('img/my-truck.jpg') center/contain no-repeat;
+        background-position: center center;
       }
       .hero-content {
         padding: 0 15px;
       }
       .hero-content h1 {
-        font-size: 2rem; /* Adjusted for readability */
+        font-size: 1.8rem;
         line-height: 1.2;
       }
       .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       .section-title { font-size: 1.6rem; }
       .footer {
