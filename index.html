@@ -148,6 +148,7 @@
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       border: 1px solid #333;
       cursor: pointer;
+      aspect-ratio: 3/4; /* Вертикальная ориентация */
     }
     .project-card:hover {
       transform: translateY(-15px);
@@ -156,11 +157,9 @@
     }
 
     .main-photo,
-    .thumbnails img,
     .project-card,
     .project-card:focus,
-    .main-photo:focus,
-    .thumbnails img:focus {
+    .main-photo:focus {
       outline: none !important;
       box-shadow: none !important;
       -webkit-tap-highlight-color: transparent !important;
@@ -168,29 +167,14 @@
 
     .main-photo {
       width: 100%;
-      height: 270px;
-      object-fit: cover;
+      height: 360px; /* Увеличено для вертикальных фото */
+      object-fit: contain; /* Не обрезает фото */
       transition: transform 0.4s ease;
       user-select: none;
+      background: #252525; /* Фон для прозрачных участков */
     }
     .main-photo:hover {
       transform: scale(1.04);
-    }
-    .card-body {
-      padding: 22px;
-      text-align: center;
-      background: #252525;
-    }
-    .project-card h3 {
-      font-family: 'Arial Black', 'Arial', sans-serif;
-      font-size: 1.7rem;
-      color: #fff;
-      margin-bottom: 16px;
-      letter-spacing: 1px;
-      font-weight: 900;
-    }
-    .thumbnails {
-      display: none;
     }
 
     /* Modal */
@@ -207,7 +191,7 @@
     }
     .modal-content {
       max-width: 92%;
-      max-height: 80%;
+      max-height: 92%;
       border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 0 60px rgba(255,107,0,0.25);
@@ -215,29 +199,8 @@
     }
     .modal img {
       width: 100%;
-      max-height: 100%;
+      max-height: 86vh;
       object-fit: contain;
-    }
-    .modal-thumbnails {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    .modal-thumbnails img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 2px solid #444;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .modal-thumbnails img:hover,
-    .modal-thumbnails img.active {
-      border-color: var(--orange);
-      transform: scale(1.1);
     }
     .close-btn, .nav-btn {
       position: absolute;
@@ -324,7 +287,8 @@
         width: 100%;
       }
       .main-photo {
-        height: 220px;
+        height: 240px; /* Уменьшено для мобильной версии */
+        object-fit: contain;
       }
       .hero {
         height: 40vh;
@@ -397,100 +361,46 @@
       <!-- Project 1 -->
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_1.jpg" alt="Project 1">
-        <div class="card-body">
-         
-          <div class="thumbnails">
-            <img src="photo/p1_1.jpg"><img src="photo/p1_2.jpg"><img src="photo/p1_3.jpg"><img src="photo/p1_4.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 2 -->
       <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
         <img class="main-photo" src="photo/p2_1.jpg" alt="Project 2">
-        <div class="card-body">
-          
-          <div class="thumbnails">
-            <img src="photo/p2_1.jpg"><img src="photo/p2_2.jpg"><img src="photo/p2_3.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 3 -->
       <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
         <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
-        <div class="card-body">
-          
-          <div class="thumbnails">
-            <img src="photo/p3_1.jpg"><img src="photo/p3_2.jpg"><img src="photo/p3_3.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 4 -->
       <div class="project-card" data-images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg">
         <img class="main-photo" src="photo/p4_1.jpg" alt="Project 4">
-        <div class="card-body">
-          
-          <div class="thumbnails">
-            <img src="photo/p4_1.jpg"><img src="photo/p4_2.jpg"><img src="photo/p4_3.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 5 -->
       <div class="project-card" data-images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg">
         <img class="main-photo" src="photo/p5_1.jpg" alt="Project 5">
-        <div class="card-body">
-         
-          <div class="thumbnails">
-            <img src="photo/p5_1.jpg"><img src="photo/p5_2.jpg"><img src="photo/p5_3.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 6 -->
       <div class="project-card" data-images="photo/p6_1.jpg,photo/p6_2.jpg">
         <img class="main-photo" src="photo/p6_1.jpg" alt="Project 6">
-        <div class="card-body">
-       
-          <div class="thumbnails">
-            <img src="photo/p6_1.jpg"><img src="photo/p6_2.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 7 -->
       <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
         <img class="main-photo" src="photo/p7_1.jpg" alt="Project 7">
-        <div class="card-body">
-         
-          <div class="thumbnails">
-            <img src="photo/p7_1.jpg"><img src="photo/p7_2.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 8 -->
       <div class="project-card" data-images="photo/p8_1.jpg,photo/p8_2.jpg">
         <img class="main-photo" src="photo/p8_1.jpg" alt="Project 8">
-        <div class="card-body">
-         
-          <div class="thumbnails">
-            <img src="photo/p8_1.jpg"><img src="photo/p8_2.jpg">
-          </div>
-        </div>
       </div>
 
       <!-- Project 9 -->
       <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
         <img class="main-photo" src="photo/p9_1.jpg" alt="Project 9">
-        <div class="card-body">
-         
-          <div class="thumbnails">
-            <img src="photo/p9_1.jpg"><img src="photo/p9_2.jpg">
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -503,7 +413,6 @@
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
-    <div class="modal-thumbnails"></div>
   </div>
 
   <!-- Footer -->
@@ -516,7 +425,6 @@
   <script>
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
-    const modalThumbs = document.querySelector('.modal-thumbnails');
     const closeBtn = document.querySelector('.close-btn');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
@@ -538,27 +446,6 @@
       modalImg.src = imgs[idx];
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-
-      // Очистка и создание миниатюр
-      modalThumbs.innerHTML = '';
-      imgs.forEach((src, i) => {
-        const thumb = document.createElement('img');
-        thumb.src = src;
-        thumb.className = i === idx ? 'active' : '';
-        thumb.onclick = () => {
-          currentIndex = i;
-          modalImg.src = src;
-          updateThumbnails();
-        };
-        modalThumbs.appendChild(thumb);
-      });
-    }
-
-    function updateThumbnails() {
-      const thumbs = modalThumbs.querySelectorAll('img');
-      thumbs.forEach((thumb, i) => {
-        thumb.className = i === currentIndex ? 'active' : '';
-      });
     }
 
     function showImg(i) {
@@ -566,7 +453,6 @@
       if (i >= currentImages.length) i = 0;
       currentIndex = i;
       modalImg.src = currentImages[i];
-      updateThumbnails();
     }
 
     closeBtn.onclick = () => { 
@@ -587,4 +473,3 @@
   </script>
 </body>
 </html>
-
