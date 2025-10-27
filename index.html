@@ -121,9 +121,9 @@
       font-size: 2.4rem;
       color: #333;
       margin-bottom: 15px;
-      margin-top: 60px;
+      margin-top: 60px; /* Равный отступ перед "Fotogalerija" и перед галереей */
       letter-spacing: 1px;
-      font-weight: 700;
+      font-weight: 700; /* Жирный текст */
       text-transform: uppercase;
       text-align: center;
     }
@@ -136,7 +136,7 @@
       text-align: justify;
     }
     .section-description .checkmark {
-      color: var(--orange);
+      color: var(--orange); /* Оранжевый цвет галочек (#ff6b00) */
       margin-right: 8px;
     }
 
@@ -145,7 +145,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
       width: 100%;
-      margin-top: 60px;
+      margin-top: 60px; /* Равный отступ от "Fotogalerija" до фотографий */
     }
     .project-card {
       background: #252525;
@@ -342,8 +342,9 @@
         margin-bottom: 10px;
       }
       .section-description .checkmark {
-        color: var(--orange) !important; /* Оранжевый цвет галочек в мобильной версии с приоритетом */
+        color: #ff6b00 !important; /* Оранжевый цвет галочек в мобильной версии с высоким приоритетом */
         margin-right: 8px;
+        font-size: 1rem; /* Для проверки, что стиль применяется */
       }
       .footer {
         padding: 15px;
