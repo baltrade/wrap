@@ -135,13 +135,13 @@
       line-height: 1.6;
       text-align: justify;
     }
-    .section-description .checkmark {
-      color: var(--orange); /* Оранжевый цвет галочек (#ff6b00) для десктопа */
+    .gallery-section .section-description .checkmark {
+      color: var(--orange) !important; /* Оранжевый цвет галочек (#ff6b00) для десктопа */
       margin-right: 8px;
     }
-    /* Перекрываем возможные стили для <i> или других элементов, оставшихся от иконок */
+    /* Перекрываем возможные стили для <i> или других <span> */
     .section-description i, .section-description span:not(.checkmark) {
-      color: #333; /* Убедимся, что старые иконки или другие <span> не мешают */
+      color: #333 !important;
     }
 
     .gallery {
@@ -345,11 +345,10 @@
         text-align: justify;
         margin-bottom: 10px;
       }
-      .section-description .checkmark {
+      .gallery-section .section-description .checkmark {
         color: var(--orange) !important; /* Оранжевый цвет галочек (#ff6b00) в мобильной версии */
         margin-right: 8px;
         font-size: 1rem; /* Для визуального подтверждения */
-        background-color: yellow; /* Временный фон для проверки применения стиля */
       }
       /* Перекрываем возможные стили от старых иконок или других <span> */
       .section-description i, .section-description span:not(.checkmark) {
@@ -390,7 +389,7 @@
   <section class="gallery-section">
     <p class="section-description">
       Mēs piedāvājam pielāgotus dizaina risinājumus, kas precīzi atbilst tava uzņēmuma identitātei.
-      Profesionāla pieeja, qualitatīvi materiāli un radoša domāšana katrā projektā.
+      Profesionāla pieeja, kvalitatīvi materiāli un radoša domāšana katrā projektā.
     </p>
     <p class="section-description">
       <span class="checkmark">✔</span> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.
