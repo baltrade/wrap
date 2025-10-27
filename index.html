@@ -135,7 +135,7 @@
       line-height: 1.6;
       text-align: justify;
     }
-    section.gallery-section p.section-description span.checkmark {
+    html body section.gallery-section p.section-description span.checkmark {
       color: var(--orange) !important; /* Оранжевый цвет галочек (#ff6b00) для десктопа */
       margin-right: 8px;
     }
@@ -345,11 +345,11 @@
         text-align: justify;
         margin-bottom: 10px;
       }
-      section.gallery-section p.section-description span.checkmark {
+      html body section.gallery-section p.section-description span.checkmark {
         color: var(--orange) !important; /* Оранжевый цвет галочек (#ff6b00) в мобильной версии */
         margin-right: 8px;
         font-size: 1rem; /* Для визуального отличия */
-        border: 2px solid red !important; /* Диагностика: красная рамка для проверки */
+        border: 2px solid red !important; /* Диагностика: красная рамка */
       }
       /* Перекрываем возможные стили от старых иконок или других <span> */
       .section-description i, .section-description span:not(.checkmark) {
