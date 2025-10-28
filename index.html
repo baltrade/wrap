@@ -34,7 +34,6 @@
       align-items: center;
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(12px);
-      /* УДАЛЕНА ОРАНЖЕВАЯ ПОЛОСА */
     }
 
     .logo {
@@ -141,9 +140,11 @@
 
     .checkmark {
       color: var(--orange);
-      font-weight: bold;
-      margin-right: 10px;
-      font-size: 1.1em;
+      font-weight: 900;
+      margin-right: 14px;
+      font-size: 1.6em; /* Увеличено */
+      width: 28px;
+      text-align: center;
     }
 
     .services-list {
@@ -154,15 +155,17 @@
     .services-list li {
       font-size: 1.2rem;
       color: #333;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       display: flex;
       align-items: flex-start;
     }
     .services-list li i {
       color: var(--orange);
-      margin-right: 10px;
-      font-size: 1.1em;
-      width: 20px;
+      margin-right: 14px;
+      font-size: 1.6em; /* Увеличено */
+      font-weight: 900;
+      width: 28px;
+      text-align: center;
     }
 
     .gallery {
@@ -280,6 +283,7 @@
       .section-title { font-size: 2rem; }
       .section-description { font-size: 1.1rem; }
       .services-list li { font-size: 1.1rem; }
+      .services-list li i { font-size: 1.5em; margin-right: 12px; }
     }
 
     @media (max-width: 576px) {
@@ -292,9 +296,10 @@
       .section-title { font-size: 1.4rem; margin-top: 40px; }
       .section-description { font-size: 0.9rem; }
       .services-list li { font-size: 0.9rem; }
+      .services-list li i { font-size: 1.3em; margin-right: 10px; }
       .footer .contact a { font-size: 0.9rem; }
       .logo { font-size: 1.2rem; }
-      .checkmark { font-size: 1em; }
+      .checkmark { font-size: 1.3em; }
     }
   </style>
 </head>
@@ -318,13 +323,12 @@
     <p class="section-description">
       Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.
 Padari savu transportu pamanāmu uz jebkura ceļa!
-
     </p>
 
     <ul class="services-list">
-      <li><i class="fas fa-check checkmark"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
-      <li><i class="fas fa-check checkmark"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
-      <li><i class="fas fa-check checkmark"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
+      <li><i class="fas fa-check"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
+      <li><i class="fas fa-check"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
+      <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
     </ul>
 
     <h2 class="section-title">Fotogalerija</h2>
@@ -430,5 +434,3 @@ Padari savu transportu pamanāmu uz jebkura ceļa!
   </script>
 </body>
 </html>
-
-
