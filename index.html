@@ -70,7 +70,7 @@
       font-size: 1.1rem;
     }
 
-    /* Hero Banner */
+    /* === HERO BANNER – ТОЛЬКО ФОТО, АДАПТИВНО === */
     .hero {
       height: 56vw;
       max-height: 70vh;
@@ -89,42 +89,45 @@
       display: block;
     }
 
-    /* Адаптация */
+    /* === АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ === */
     @media (max-width: 992px) {
       .hero { height: 60vw; max-height: 65vh; margin-top: 70px; }
     }
+
     @media (max-width: 768px) {
       .hero { height: 70vw; max-height: 60vh; margin-top: 80px; }
     }
+
     @media (max-width: 576px) {
       .hero { height: 80vw; max-height: 55vh; min-height: 260px; margin-top: 70px; }
       header { padding: 15px 20px; }
       .logo { font-size: 1.2rem; }
     }
+
+    /* === ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ (landscape) === */
     @media (orientation: landscape) and (max-height: 600px) {
-      .hero { height: 90vh; max-height: none; margin-top: 60px; }
+      .hero {
+        height: 90vh;
+        max-height: none;
+        margin-top: 60px;
+      }
     }
 
     /* Gallery Section */
     .gallery-section {
-      padding: 40px 40px 80px;
+      padding: 40px 40px 60px;
       background: #f5f2eb;
       text-align: left;
     }
 
-    /* Карточка для текста */
-    .services-block {
-      background: #fff;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-      margin-bottom: 60px;
-      border: 1px solid #eee;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .services-block:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+    .section-title {
+      font-size: 2.4rem;
+      color: #333;
+      margin: 60px 0 15px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     .section-description {
@@ -135,10 +138,19 @@
       margin-bottom: 20px;
     }
 
+    .checkmark {
+      color: var(--orange);
+      font-weight: 900;
+      margin-right: 14px;
+      font-size: 1.6em;
+      width: 28px;
+      text-align: center;
+    }
+
     .services-list {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 20px 0;
     }
     .services-list li {
       font-size: 1.2rem;
@@ -156,43 +168,11 @@
       text-align: center;
     }
 
-    /* Заголовок с оранжевой линией */
-    .section-title {
-      font-size: 2.4rem;
-      color: #333;
-      margin: 0 0 50px;
-      letter-spacing: 1px;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-align: center;
-      position: relative;
-      padding-bottom: 25px;
-    }
-    .section-title::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: var(--orange);
-      border-radius: 2px;
-      box-shadow: 0 0 15px rgba(255,107,0,0.5);
-    }
-
-    /* Галерея — тёмная витрина */
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      padding: 60px 30px;
-      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
-      border-radius: 28px;
-      box-shadow: 
-        0 25px 60px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,107,0,0.15);
+      gap: 35px;
+      margin-top: 60px;
     }
 
     .project-card {
@@ -294,37 +274,18 @@
 
     /* Responsive */
     @media (max-width: 992px) {
-      .gallery { 
-        grid-template-columns: repeat(2, 1fr); 
-        padding: 50px 25px;
-        gap: 28px;
-      }
-      .services-block { padding: 35px; }
-      .section-title { font-size: 2.2rem; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 2.4rem; }
     }
 
     @media (max-width: 768px) {
       header { flex-direction: column; gap: 12px; padding: 15px; }
       .contact { gap: 15px; flex-direction: column; }
-      .gallery-section { padding: 30px 20px 60px; }
-      .services-block { padding: 30px; margin-bottom: 50px; }
-      .section-title { 
-        font-size: 1.9rem; 
-        margin: 0 0 40px;
-        padding-bottom: 20px;
-      }
-      .section-title::before { width: 80px; height: 3px; }
+      .gallery-section { padding: 30px 20px 50px; }
+      .section-title { font-size: 2rem; }
       .section-description { font-size: 1.1rem; }
       .services-list li { font-size: 1.1rem; }
-      .services-list li i { 
-        font-size: 1.5em; 
-        margin-right: 12px; 
-        font-weight: 900;
-      }
-      .gallery {
-        padding: 40px 20px;
-        gap: 24px;
-      }
+      .services-list li i { font-size: 1.5em; margin-right: 12px; }
     }
 
     @media (max-width: 576px) {
@@ -334,10 +295,9 @@
       .contact a { font-size: 0.9rem; }
 
       .gallery {
-        grid-template-columns: 1fr;
-        padding: 35px 15px;
-        gap: 20px;
-        border-radius: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 40px;
       }
       .project-card {
         min-height: 0;
@@ -346,32 +306,23 @@
       .main-photo {
         height: 100%;
         object-fit: cover;
+        object-position: center;
       }
 
-      .services-block { 
-        padding: 25px; 
-        margin-bottom: 40px;
-        border-radius: 16px;
-      }
-      .section-title { 
-        font-size: 1.6rem; 
-        margin: 0 0 35px;
-        padding-bottom: 15px;
-      }
-      .section-title::before { width: 60px; height: 3px; }
-      .section-description { font-size: 0.95rem; }
-      .services-list li { font-size: 0.95rem; }
-      .services-list li i { 
-        font-size: 1.3em; 
-        margin-right: 10px; 
-        font-weight: 900;
-      }
+      .section-title { font-size: 1.4rem; margin-top: 40px; }
+      .section-description { font-size: 0.9rem; }
+      .services-list li { font-size: 0.9rem; }
+      .services-list li i { font-size: 1.3em; margin-right: 10px; }
       .footer .contact a { font-size: 0.9rem; }
       .logo { font-size: 1.2rem; }
+      .checkmark { font-size: 1.3em; }
     }
 
+    /* Очень узкие экраны — 1 колонка */
     @media (max-width: 360px) {
-      .gallery { grid-template-columns: 1fr; }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -385,39 +336,33 @@
     </div>
   </header>
 
-  <!-- Hero Banner -->
+  <!-- Hero Banner – Только фото, адаптивно -->
   <section class="hero">
     <img src="img/my-truck2.jpg" alt="HammerWrap – Kravas auto aplīmēšana" class="hero-image">
   </section>
 
   <!-- Gallery Section -->
   <section class="gallery-section">
-    
-    <!-- Карточка с текстом -->
-    <div class="services-block">
-      <p class="section-description">
-        Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.
-        Padari savu transportu pamanāmu uz jebkura ceļa!
-      </p>
+    <p class="section-description">
+      Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.
+      Padari savu transportu pamanāmu uz jebkura ceļa!
+    </p>
 
-      <ul class="services-list">
-        <li><i class="fas fa-check"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
-        <li><i class="fas fa-check"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
-        <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
-      </ul>
-    </div>
+    <ul class="services-list">
+      <li><i class="fas fa-check"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
+      <li><i class="fas fa-check"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
+      <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
+    </ul>
 
-    <!-- Заголовок с линией -->
     <h2 class="section-title">Fotogalerija</h2>
-    
-    <!-- Галерея -->
     <div class="gallery">
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_2.jpg" alt="Project 1">
       </div>
-      <div class="project-card" data-images="photo/p10_1.jpg,photo/p10_2.jpg">
+       <div class="project-card" data-images="photo/p10_1.jpg,photo/p10_2.jpg">
         <img class="main-photo" src="photo/p10_1.jpg" alt="Project 2">
       </div>
+
       <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
         <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
       </div>
@@ -439,17 +384,18 @@
       <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
         <img class="main-photo" src="photo/p7_11.jpg" alt="Project 9">
       </div>
-      <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
+        <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
         <img class="main-photo" src="photo/p2_3.jpg" alt="Project 10">
       </div>
+
     </div>
   </section>
 
-  <!-- Modal -->
+ <!-- Modal -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-    <span class="nav-btn prev-btn">Left Arrow</span>
-    <span class="nav-btn next-btn">Right Arrow</span>
+    <span class="nav-btn prev-btn">←</span>
+    <span class="nav-btn next-btn">→</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
@@ -513,3 +459,10 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
