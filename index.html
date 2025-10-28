@@ -70,7 +70,7 @@
       font-size: 1.1rem;
     }
 
-    /* === HERO BANNER – ТОЛЬКО ФОТО, АДАПТИВНО === */
+    /* Hero Banner */
     .hero {
       height: 56vw;
       max-height: 70vh;
@@ -89,28 +89,20 @@
       display: block;
     }
 
-    /* === АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ === */
+    /* Адаптация */
     @media (max-width: 992px) {
       .hero { height: 60vw; max-height: 65vh; margin-top: 70px; }
     }
-
     @media (max-width: 768px) {
       .hero { height: 70vw; max-height: 60vh; margin-top: 80px; }
     }
-
     @media (max-width: 576px) {
       .hero { height: 80vw; max-height: 55vh; min-height: 260px; margin-top: 70px; }
       header { padding: 15px 20px; }
       .logo { font-size: 1.2rem; }
     }
-
-    /* === ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ (landscape) === */
     @media (orientation: landscape) and (max-height: 600px) {
-      .hero {
-        height: 90vh;
-        max-height: none;
-        margin-top: 60px;
-      }
+      .hero { height: 90vh; max-height: none; margin-top: 60px; }
     }
 
     /* Gallery Section */
@@ -120,31 +112,12 @@
       text-align: left;
     }
 
-    .section-title {
-      font-size: 2.4rem;
-      color: #333;
-      margin: 60px 0 15px;
-      letter-spacing: 1px;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
     .section-description {
       font-size: 1.2rem;
       color: #333;
       line-height: 1.6;
       text-align: justify;
       margin-bottom: 20px;
-    }
-
-    .checkmark {
-      color: var(--orange);
-      font-weight: 900;
-      margin-right: 14px;
-      font-size: 1.6em;
-      width: 28px;
-      text-align: center;
     }
 
     .services-list {
@@ -166,6 +139,46 @@
       font-weight: 900;
       width: 28px;
       text-align: center;
+    }
+
+    /* === HARLEY-STYLE: FOTOGALERIJA (ПОЛИРОВАННЫЙ ХРОМ #d0d0d0) === */
+    .gallery-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 3.2rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #d0d0d0;
+      text-align: center;
+      margin: 70px 0 50px;
+      position: relative;
+      text-shadow: 
+        2px 2px 0 #000,
+        4px 4px 0 #ff6b00,
+        6px 6px 0 #000,
+        8px 8px 12px rgba(0,0,0,0.8);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .gallery-title::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: Nad 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 6px;
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+      opacity: 0.6;
+      border-radius: 3px;
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0%, 100% { transform: translateX(-150%) translateX(-50%); }
+      50% { transform: translateX(150%) translateX(-50%); }
     }
 
     .gallery {
@@ -275,14 +288,14 @@
     /* Responsive */
     @media (max-width: 992px) {
       .gallery { grid-template-columns: repeat(2, 1fr); }
-      .section-title { font-size: 2.4rem; }
+      .gallery-title { font-size: 2.8rem; margin: 60px 0 45px; }
     }
 
     @media (max-width: 768px) {
       header { flex-direction: column; gap: 12px; padding: 15px; }
       .contact { gap: 15px; flex-direction: column; }
       .gallery-section { padding: 30px 20px 50px; }
-      .section-title { font-size: 2rem; }
+      .gallery-title { font-size: 2.4rem; margin: 50px 0 40px; letter-spacing: 2px; }
       .section-description { font-size: 1.1rem; }
       .services-list li { font-size: 1.1rem; }
       .services-list li i { font-size: 1.5em; margin-right: 12px; }
@@ -309,20 +322,20 @@
         object-position: center;
       }
 
-      .section-title { font-size: 1.4rem; margin-top: 40px; }
+      .gallery-title { 
+        font-size: 2rem; 
+        margin: 40px 0 35px; 
+      }
       .section-description { font-size: 0.9rem; }
       .services-list li { font-size: 0.9rem; }
       .services-list li i { font-size: 1.3em; margin-right: 10px; }
       .footer .contact a { font-size: 0.9rem; }
       .logo { font-size: 1.2rem; }
-      .checkmark { font-size: 1.3em; }
     }
 
-    /* Очень узкие экраны — 1 колонка */
     @media (max-width: 360px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+      .gallery { grid-template-columns: 1fr; }
+      .gallery-title { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -336,7 +349,7 @@
     </div>
   </header>
 
-  <!-- Hero Banner – Только фото, адаптивно -->
+  <!-- Hero Banner -->
   <section class="hero">
     <img src="img/my-truck2.jpg" alt="HammerWrap – Kravas auto aplīmēšana" class="hero-image">
   </section>
@@ -354,15 +367,16 @@
       <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
     </ul>
 
-    <h2 class="section-title">Fotogalerija</h2>
+    <!-- === FOTOGALERIJA: ХРОМ #d0d0d0 === -->
+    <h2 class="gallery-title">Fotogalerija</h2>
+
     <div class="gallery">
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_2.jpg" alt="Project 1">
       </div>
-       <div class="project-card" data-images="photo/p10_1.jpg,photo/p10_2.jpg">
+      <div class="project-card" data-images="photo/p10_1.jpg,photo/p10_2.jpg">
         <img class="main-photo" src="photo/p10_1.jpg" alt="Project 2">
       </div>
-
       <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
         <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
       </div>
@@ -384,10 +398,9 @@
       <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
         <img class="main-photo" src="photo/p7_11.jpg" alt="Project 9">
       </div>
-        <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
+      <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
         <img class="main-photo" src="photo/p2_3.jpg" alt="Project 10">
       </div>
-
     </div>
   </section>
 
@@ -459,12 +472,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
