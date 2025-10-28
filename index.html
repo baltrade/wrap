@@ -12,8 +12,6 @@
       --text: #ffffff;
       --orange: #ff6b00;
       --overlay: rgba(0, 0, 0, 0.55);
-      --beige: #f5f2eb;
-      --asphalt: #4a4a4a;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,7 +70,7 @@
       font-size: 1.1rem;
     }
 
-    /* Hero Banner */
+    /* === HERO BANNER – ТОЛЬКО ФОТО, АДАПТИВНО === */
     .hero {
       height: 56vw;
       max-height: 70vh;
@@ -91,34 +89,45 @@
       display: block;
     }
 
-    /* Адаптация */
+    /* === АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ === */
     @media (max-width: 992px) {
       .hero { height: 60vw; max-height: 65vh; margin-top: 70px; }
     }
+
     @media (max-width: 768px) {
       .hero { height: 70vw; max-height: 60vh; margin-top: 80px; }
     }
+
     @media (max-width: 576px) {
       .hero { height: 80vw; max-height: 55vh; min-height: 260px; margin-top: 70px; }
       header { padding: 15px 20px; }
       .logo { font-size: 1.2rem; }
     }
+
+    /* === ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ (landscape) === */
     @media (orientation: landscape) and (max-height: 600px) {
-      .hero { height: 90vh; max-height: none; margin-top: 60px; }
+      .hero {
+        height: 90vh;
+        max-height: none;
+        margin-top: 60px;
+      }
     }
 
-    /* Контейнер */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    /* === БЛОК 1: Реклама (бежевый) === */
-    .about-section {
-      background: var(--beige);
-      padding: 60px 40px;
+    /* Gallery Section */
+    .gallery-section {
+      padding: 40px 40px 60px;
+      background: #f5f2eb;
       text-align: left;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      color: #333;
+      margin: 60px 0 15px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     .section-description {
@@ -126,15 +135,22 @@
       color: #333;
       line-height: 1.6;
       text-align: justify;
-      max-width: 1000px;
-      margin: 0 auto 30px;
+      margin-bottom: 20px;
+    }
+
+    .checkmark {
+      color: var(--orange);
+      font-weight: 900;
+      margin-right: 14px;
+      font-size: 1.6em;
+      width: 28px;
+      text-align: center;
     }
 
     .services-list {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
-      max-width: 1000px;
+      margin: 20px 0;
     }
     .services-list li {
       font-size: 1.2rem;
@@ -152,28 +168,11 @@
       text-align: center;
     }
 
-    /* === БЛОК 2: Галерея (асфальт) === */
-    .gallery-wrapper {
-      background: var(--asphalt);
-      padding: 60px 40px 80px;
-    }
-
-    .gallery-title {
-      font-size: 2.4rem;
-      color: var(--beige);
-      margin: 0 0 50px;
-      letter-spacing: 1px;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-    }
-
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 35px;
-      margin-top: 0;
+      margin-top: 60px;
     }
 
     .project-card {
@@ -276,19 +275,14 @@
     /* Responsive */
     @media (max-width: 992px) {
       .gallery { grid-template-columns: repeat(2, 1fr); }
-      .container { padding: 0 20px; }
-      .about-section { padding: 50px 20px; }
-      .gallery-wrapper { padding: 50px 20px 70px; }
-      .gallery-title { font-size: 2.2rem; }
+      .section-title { font-size: 2.4rem; }
     }
 
     @media (max-width: 768px) {
       header { flex-direction: column; gap: 12px; padding: 15px; }
       .contact { gap: 15px; flex-direction: column; }
-      .about-section { padding: 40px 15px; }
-      .gallery-wrapper { padding: 40px 15px 60px; }
-      .gallery-title { font-size: 1.8rem; margin-bottom: 40px; }
-      .gallery { gap: 20px; }
+      .gallery-section { padding: 30px 20px 50px; }
+      .section-title { font-size: 2rem; }
       .section-description { font-size: 1.1rem; }
       .services-list li { font-size: 1.1rem; }
       .services-list li i { font-size: 1.5em; margin-right: 12px; }
@@ -303,21 +297,32 @@
       .gallery {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
+        margin-top: 40px;
       }
       .project-card {
         min-height: 0;
         aspect-ratio: 3 / 4;
       }
-      .gallery-title { font-size: 1.5rem; margin-bottom: 30px; }
+      .main-photo {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .section-title { font-size: 1.4rem; margin-top: 40px; }
       .section-description { font-size: 0.9rem; }
       .services-list li { font-size: 0.9rem; }
       .services-list li i { font-size: 1.3em; margin-right: 10px; }
       .footer .contact a { font-size: 0.9rem; }
       .logo { font-size: 1.2rem; }
+      .checkmark { font-size: 1.3em; }
     }
 
+    /* Очень узкие экраны — 1 колонка */
     @media (max-width: 360px) {
-      .gallery { grid-template-columns: 1fr; }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -331,71 +336,66 @@
     </div>
   </header>
 
-  <!-- Hero Banner -->
+  <!-- Hero Banner – Только фото, адаптивно -->
   <section class="hero">
     <img src="img/my-truck2.jpg" alt="HammerWrap – Kravas auto aplīmēšana" class="hero-image">
   </section>
 
-  <!-- БЛОК 1: Реклама (бежевый) -->
-  <section class="about-section">
-    <div class="container">
-      <p class="section-description">
-        Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.
-        Padari savu transportu pamanāmu uz jebkura ceļa!
-      </p>
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <p class="section-description">
+      Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.
+      Padari savu transportu pamanāmu uz jebkura ceļa!
+    </p>
 
-      <ul class="services-list">
-        <li><i class="fas fa-check"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
-        <li><i class="fas fa-check"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
-        <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
-      </ul>
-    </div>
-  </section>
+    <ul class="services-list">
+      <li><i class="fas fa-check"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
+      <li><i class="fas fa-check"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
+      <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
+    </ul>
 
-  <!-- БЛОК 2: Галерея (асфальт) -->
-  <section class="gallery-wrapper">
-    <div class="container">
-      <h2 class="gallery-title">Fotogalerija</h2>
-      <div class="gallery">
-        <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
-          <img class="main-photo" src="photo/p1_2.jpg" alt="Project 1">
-        </div>
-        <div class="project-card" data-images="photo/p10_1.jpg,photo/p10_2.jpg">
-          <img class="main-photo" src="photo/p10_1.jpg" alt="Project 2">
-        </div>
-        <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
-          <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
-        </div>
-        <div class="project-card" data-images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg">
-          <img class="main-photo" src="photo/p4_1.jpg" alt="Project 4">
-        </div>
-        <div class="project-card" data-images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg">
-          <img class="main-photo" src="photo/p5_1.jpg" alt="Project 5">
-        </div>
-        <div class="project-card" data-images="photo/p6_1.jpg,photo/p6_2.jpg">
-          <img class="main-photo" src="photo/p6_1.jpg" alt="Project 6">
-        </div>
-        <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
-          <img class="main-photo" src="photo/p9_1.jpg" alt="Project 7">
-        </div>
-        <div class="project-card" data-images="photo/p8_1.jpg,photo/p8_2.jpg">
-          <img class="main-photo" src="photo/p8_11.jpg" alt="Project 8">
-        </div>
-        <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
-          <img class="main-photo" src="photo/p7_11.jpg" alt="Project 9">
-        </div>
-        <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
-          <img class="main-photo" src="photo/p2_3.jpg" alt="Project 10">
-        </div>
+    <h2 class="section-title">Fotogalerija</h2>
+    <div class="gallery">
+      <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
+        <img class="main-photo" src="photo/p1_2.jpg" alt="Project 1">
       </div>
+       <div class="project-card" data-images="photo/p10_1.jpg,photo/p10_2.jpg">
+        <img class="main-photo" src="photo/p10_1.jpg" alt="Project 2">
+      </div>
+
+      <div class="project-card" data-images="photo/p3_1.jpg,photo/p3_2.jpg,photo/p3_3.jpg">
+        <img class="main-photo" src="photo/p3_1.jpg" alt="Project 3">
+      </div>
+      <div class="project-card" data-images="photo/p4_1.jpg,photo/p4_2.jpg,photo/p4_3.jpg">
+        <img class="main-photo" src="photo/p4_1.jpg" alt="Project 4">
+      </div>
+      <div class="project-card" data-images="photo/p5_1.jpg,photo/p5_2.jpg,photo/p5_3.jpg">
+        <img class="main-photo" src="photo/p5_1.jpg" alt="Project 5">
+      </div>
+      <div class="project-card" data-images="photo/p6_1.jpg,photo/p6_2.jpg">
+        <img class="main-photo" src="photo/p6_1.jpg" alt="Project 6">
+      </div>
+      <div class="project-card" data-images="photo/p9_1.jpg,photo/p9_2.jpg">
+        <img class="main-photo" src="photo/p9_1.jpg" alt="Project 7">
+      </div>
+      <div class="project-card" data-images="photo/p8_1.jpg,photo/p8_2.jpg">
+        <img class="main-photo" src="photo/p8_11.jpg" alt="Project 8">
+      </div>
+      <div class="project-card" data-images="photo/p7_1.jpg,photo/p7_2.jpg">
+        <img class="main-photo" src="photo/p7_11.jpg" alt="Project 9">
+      </div>
+        <div class="project-card" data-images="photo/p2_1.jpg,photo/p2_2.jpg,photo/p2_3.jpg">
+        <img class="main-photo" src="photo/p2_3.jpg" alt="Project 10">
+      </div>
+
     </div>
   </section>
 
-  <!-- Modal -->
+ <!-- Modal -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-    <span class="nav-btn prev-btn">Left Arrow</span>
-    <span class="nav-btn next-btn">Right Arrow</span>
+    <span class="nav-btn prev-btn">←</span>
+    <span class="nav-btn next-btn">→</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
@@ -459,3 +459,12 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
