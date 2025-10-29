@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="lv">
 <head>
   <meta charset="UTF-8">
@@ -11,6 +11,7 @@
       --bg: #000;
       --text: #ffffff;
       --orange: #ff6b00;
+      --warm-yellow: #ff9a00; /* более тёплый, насыщенный жёлто-оранжевый */
       --overlay: rgba(0, 0, 0, 0.55);
     }
 
@@ -23,10 +24,10 @@
       margin-top: 80px;
     }
 
-    /* Header */
+    /* Header — НЕ ФИКСИРОВАННЫЙ */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: relative;
+      top: auto; left: auto; right: auto;
       z-index: 100;
       padding: 12px 20px;
       display: flex;
@@ -71,9 +72,11 @@
       text-shadow: 0 0 8px rgba(255, 107, 0, 0.5);
     }
 
+    /* ИКОНКИ — ТЁПЛЫЙ ЖЁЛТО-ОРАНЖЕВЫЙ */
     .contact-left i,
-    .contact-right i {
-      color: var(--orange);
+    .contact-right i,
+    .services-list li i {
+      color: var(--warm-yellow);
       font-size: 1.1rem;
     }
 
@@ -82,7 +85,7 @@
       height: 56vw;
       max-height: 70vh;
       min-height: 300px;
-      margin-top: 80px;
+      margin-top: 0;
       overflow: hidden;
       position: relative;
       background: #000;
@@ -98,14 +101,14 @@
 
     /* Адаптивность */
     @media (max-width: 992px) {
-      .hero { height: 60vw; max-height: 65vh; margin-top: 90px; }
+      .hero { height: 60vw; max-height: 65vh; }
       .logo-img { height: 55px; }
     }
 
     /* === МОБИЛЬНАЯ ВЕРСИЯ (≤768px) === */
     @media (max-width: 768px) {
       body { margin-top: 70px; }
-      .hero { height: 70vw; max-height: 60vh; margin-top: 70px; }
+      .hero { height: 70vw; max-height: 60vh; margin-top: 0; }
 
       header {
         flex-direction: row;
@@ -115,18 +118,20 @@
         gap: 0;
       }
 
-      /* Логотип слева, увеличен */
       .logo-img {
-        height: 70px;
-        max-width: 200px;
+        height: 78px;
+        max-width: 220px;
       }
 
-      /* Убираем email из шапки */
       .contact-left { display: none; }
-
-      /* Телефон справа */
       .contact-right {
+        flex-direction: column;
+        align-items: flex-end;
         font-size: 0.95rem;
+        gap: 6px;
+      }
+      .contact-right a {
+        justify-content: flex-end;
       }
 
       .contact-bar {
@@ -136,14 +141,14 @@
     }
 
     @media (max-width: 576px) {
-      .hero { height: 80vw; max-height: 55vh; min-height: 260px; margin-top: 70px; }
-      .logo-img { height: 60px; max-width: 180px; }
+      .hero { height: 80vw; max-height: 55vh; min-height: 260px; margin-top: 0; }
+      .logo-img { height: 68px; max-width: 190px; }
       .contact-right { font-size: 0.9rem; }
       header { padding: 8px 12px; }
     }
 
     @media (orientation: landscape) and (max-height: 600px) {
-      .hero { height: 90vh; max-height: none; margin-top: 70px; }
+      .hero { height: 90vh; max-height: none; margin-top: 0; }
     }
 
     /* Gallery Section */
@@ -153,6 +158,14 @@
       text-align: left;
     }
 
+    .section-description {
+      font-size: 1.2rem;
+      color: #333;
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
     .section-title {
       font-size: 2.4rem;
       margin: 60px 0 15px;
@@ -160,20 +173,31 @@
       font-weight: 700;
       text-transform: uppercase;
       text-align: center;
-      background: linear-gradient(135deg, #8c8c88 0%, #c8c8c5 45%, #a0a09c 100%);
+      /* ОРИГИНАЛЬНЫЙ ЦВЕТ + УСИЛЕННЫЙ ГРАДИЕНТ */
+      background: linear-gradient(
+        135deg,
+        #8c8c88 0%,
+        #b8b8b5 20%,
+        #c8c8c5 40%,
+        #d8d8d5 50%,
+        #c8c8c5 60%,
+        #b8b8b5 80%,
+        #a0a09c 100%
+      );
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 4px rgba(140, 140, 136, 0.3));
       text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      /* БОЛЬШЕ ПЕРЕЛИВА */
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
     }
 
-    .section-description {
-      font-size: 1.2rem;
-      color: #333;
-      line-height: 1.6;
-      text-align: justify;
-      margin-bottom: 20px;
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .services-list {
@@ -189,7 +213,6 @@
       align-items: flex-start;
     }
     .services-list li i {
-      color: var(--orange);
       margin-right: 14px;
       font-size: 1.6em;
       font-weight: 900;
@@ -285,7 +308,7 @@
     .prev-btn { left: 20px; }
     .next-btn { right: 20px; }
 
-    /* Footer — EMAIL ПО ЦЕНТРУ */
+    /* Footer */
     .footer {
       padding: 20px;
       text-align: center;
@@ -344,21 +367,19 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header — НЕ ФИКСИРОВАННЫЙ -->
   <header>
-    <!-- Логотип слева (в мобильной версии) -->
     <img src="esdesign.jpg" alt="ESDESIGN Logo" class="logo-img">
 
-    <!-- Контакты: email слева, телефон справа -->
     <div class="contact-bar">
-      <div class="contact-left">
-        <a href="mailto:metalhammers@inbox.lv">
-          <i class="fas fa-envelope"></i> metalhammers@inbox.lv
-        </a>
-      </div>
+      <div class="contact-left"></div>
+
       <div class="contact-right">
         <a href="tel:+37125538622">
           <i class="fas fa-phone"></i> +371 255 386 22
+        </a>
+        <a href="mailto:metalhammers@inbox.lv">
+          <i class="fas fa-envelope"></i> metalhammers@inbox.lv
         </a>
       </div>
     </div>
@@ -443,12 +464,10 @@
     </div>
   </div>
 
-  <!-- Footer — EMAIL ПО ЦЕНТРУ -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="contact">
-      <a href="mailto:metalhammers@inbox.lv">
-        <i class="fas fa-envelope"></i> metalhammers@inbox.lv
-      </a>
+      <!-- Email убран -->
     </div>
   </footer>
 
