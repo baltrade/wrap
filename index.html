@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>SDesign – Pilna Servisa Kravas Auto Aplīmēšana</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+  <!-- Montserrat + Bebas Neue -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
@@ -13,221 +14,192 @@
       --orange: #ff6b00;
       --warm-yellow: #ff9a00;
       --overlay: rgba(0, 0, 0, 0.55);
+      --gray-text: #333;
+      --contact-color: #ddd;   /* <-- цвет контактов */
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #000;
-      color: var(--text);
-      overflow-x: hidden;
-      margin-top: 0 !important;
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:#000;
+      color:var(--text);
+      overflow-x:hidden;
     }
 
-    /* === ШАПКА — ОБНОВЛЁННАЯ ВЕРСИЯ === */
-    header {
-      position: relative;
-      z-index: 100;
-      padding: 0 40px;
-      height: 90px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(12px);
-      max-width: 1400px;
-      margin: 0 auto;
-      border-bottom: 1px solid rgba(255, 107, 0, 0.15);
+    /* ==== HEADER ==== */
+    header{
+      position:relative;z-index:100;padding:0 40px;height:90px;
+      display:flex;justify-content:flex-start;align-items:center;
+      background:rgba(0,0,0,0.4);backdrop-filter:blur(12px);
+      max-width:1400px;margin:0 auto;
+      border-bottom:1px solid rgba(255,107,0,0.15);
+    }
+    .logo-img{height:78px;max-width:320px;object-fit:contain;
+      filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));}
+    .contact-right{
+      position:absolute;right:40px;bottom:12px;
+      display:flex;flex-direction:column;align-items:flex-end;
+      gap:6px;font-weight:500;font-size:1.05rem;
+    }
+    .contact-right a{
+      color:var(--contact-color);text-decoration:none;
+      display:flex;align-items:center;gap:8px;
+      transition:all .3s ease;white-space:nowrap;
+    }
+    .contact-right a:hover{color:var(--orange);
+      text-shadow:0 0 8px rgba(255,107,0,0.5);}
+    .contact-right i{color:var(--warm-yellow);font-size:1.15rem;}
+
+    @media(max-width:768px){
+      header{height:80px;padding:0 15px;}
+      .logo-img{height:70px;max-width:220px;}
+      .contact-right{right:15px;bottom:10px;font-size:.95rem;gap:5px;}
+    }
+    @media(max-width:576px){
+      header{height:70px;padding:0 12px;}
+      .logo-img{height:62px;max-width:190px;}
+      .contact-right{right:12px;bottom:8px;font-size:.9rem;gap:4px;}
+      .contact-right i{font-size:1.05rem;}
     }
 
-    .logo-img {
-      height: 78px;
-      width: auto;
-      max-width: 320px;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    /* ==== HERO ==== */
+    .hero{height:56vw;max-height:70vh;min-height:300px;overflow:hidden;position:relative;background:#000;}
+    .hero-image{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+    @media(max-width:992px){.hero{height:60vw;max-height:65vh;}}
+    @media(orientation:landscape) and (max-height:600px){.hero{height:90vh;max-height:none;}}
+
+    /* ==== GALLERY ==== */
+    .gallery-section{padding:40px 40px 60px;background:#f5f2eb;text-align:left;}
+    .section-description{font-size:1.2rem;color:var(--gray-text);line-height:1.6;text-align:justify;margin-bottom:20px;}
+    .section-title{
+      font-size:2.4rem;margin:60px 0 15px;letter-spacing:1px;font-weight:700;
+      text-transform:uppercase;text-align:center;
+      background:linear-gradient(135deg,#8c8c88 0%,#b8b8b5 20%,#c8c8c5 40%,#d8d8d5 50%,#c8c8c5 60%,#b8b8b5 80%,#a0a09c 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 0 4px rgba(140,140,136,0.3));text-shadow:0 1px 1px rgba(0,0,0,0.1);
+      background-size:300% 300%;animation:gradientShift 10s ease infinite;
+    }
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .services-list{list-style:none;padding:0;margin:20px 0;}
+    .services-list li{font-size:1.2rem;color:var(--gray-text);margin-bottom:16px;display:flex;align-items:flex-start;}
+    .services-list li i{margin-right:14px;font-size:1.6em;font-weight:900;width:28px;text-align:center;color:var(--warm-yellow);}
+
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;margin-top:60px;}
+    .project-card{
+      background:#252525;border-radius:18px;overflow:hidden;
+      box-shadow:0 8px 25px rgba(0,0,0,.45);transition:all .4s cubic-bezier(.25,.8,.25,1);
+      border:1px solid #333;cursor:pointer;aspect-ratio:3/4;min-height:400px;
+    }
+    .project-card:hover{
+      transform:translateY(-15px);box-shadow:0 25px 50px rgba(255,107,0,.15);border-color:var(--orange);
+    }
+    .main-photo{
+      width:100%;height:100%;object-fit:cover;object-position:center;
+      transition:transform .4s ease;user-select:none;background:#252525;display:block;
+    }
+    .main-photo:hover{transform:scale(1.04);}
+
+    .modal{
+      display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;
+      background:rgba(0,0,0,.97);justify-content:center;align-items:center;padding:20px;
+    }
+    .modal-content{
+      max-width:92%;max-height:92%;border-radius:18px;overflow:hidden;
+      box-shadow:0 0 60px rgba(255,107,0,.25);border:1px solid #444;
+    }
+    .modal img{width:100%;max-height:86vh;object-fit:contain;}
+    .close-btn,.nav-btn{
+      position:absolute;background:var(--orange);color:#000;width:52px;height:52px;
+      border-radius:50%;font-size:26px;font-weight:bold;display:flex;align-items:center;
+      justify-content:center;cursor:pointer;transition:all .3s ease;
+      box-shadow:0 4px 15px rgba(0,0,0,.5);
+    }
+    .close-btn:hover,.nav-btn:hover{
+      background:#fff;transform:scale(1.15);box-shadow:0 6px 20px rgba(255,107,0,.6);
+    }
+    .close-btn{top:20px;right:20px;}
+    .prev-btn{left:20px;}
+    .next-btn{right:20px;}
+
+    /* ==== FOOTER ==== */
+    .footer{
+      position:relative;padding:30px 40px;text-align:center;background:#111;
+      border-top:1px solid rgba(255,107,0,0.2);min-height:90px;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+    }
+    .footer .contact{
+      display:flex;justify-content:center;gap:10px;margin-bottom:8px;
+    }
+    .footer .contact a{
+      font-size:1rem;color:var(--contact-color);text-decoration:none;
+      display:flex;align-items:center;gap:6px;
+    }
+    .footer .contact a:hover{color:var(--orange);}
+
+    /* ==== СЛОГАН – УЗКИЙ, НАКЛОННЫЙ, ЦВЕТ КАК У КОНТАКТОВ ==== */
+    .footer-slogan{
+      font-family:'Bebas Neue',sans-serif;
+      font-weight:100;
+      font-style:italic;               /* наклон */
+      font-size:1.6rem;
+      letter-spacing:2.5px;
+      text-transform:uppercase;
+      color:var(--contact-color);      /* тот же цвет */
+      text-shadow:0 2px 4px rgba(0,0,0,0.5);
+      line-height:1;
+      margin:0;
+      padding:0 10px;
     }
 
-    /* Контакты — в правом нижнем углу шапки */
-    .contact-right {
-      position: absolute;
-      right: 40px;
-      bottom: 12px; /* выравнивание по низу лого */
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-      font-weight: 500;
-      font-size: 1.05rem;
+    /* ==== АДАПТИВНОСТЬ ==== */
+    @media(max-width:992px){
+      .gallery{grid-template-columns:repeat(2,1fr);}
+      .section-title{font-size:2.2rem;}
+      .footer-slogan{font-size:1.9rem;letter-spacing:1.8px;}
     }
-
-    .contact-right a {
-      color: #ddd;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      white-space: nowrap;
+    @media(max-width:768px){
+      .gallery-section{padding:30px 20px 50px;}
+      .section-title{font-size:2rem;}
+      .section-description{font-size:1.1rem;}
+      .services-list li{font-size:1.1rem;}
+      .services-list li i{font-size:1.5em;margin-right:12px;}
+      .footer{padding:25px 20px;}
+      .footer-slogan{font-size:1.7rem;letter-spacing:1.5px;}
     }
-
-    .contact-right a:hover {
-      color: var(--orange);
-      text-shadow: 0 0 8px rgba(255, 107, 0, 0.5);
+    @media(max-width:576px){
+      .gallery{grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px;}
+      .project-card{min-height:0;aspect-ratio:3/4;}
+      .section-title{font-size:1.6rem;margin-top:40px;}
+      .section-description{font-size:.9rem;}
+      .services-list li{font-size:.9rem;}
+      .services-list li i{font-size:1.3em;margin-right:10px;}
+      .footer .contact a{font-size:.9rem;}
+      .footer{padding:22px 15px;}
+      .footer-slogan{font-size:1.4rem;letter-spacing:1.2px;}
     }
-
-    .contact-right i {
-      color: var(--warm-yellow);
-      font-size: 1.15rem;
+    @media(max-width:360px){
+      .gallery{grid-template-columns:1fr;}
+      .footer-slogan{font-size:1.25rem;letter-spacing:1px;}
     }
-
-    /* === МОБИЛЬНАЯ ВЕРСИЯ === */
-    @media (max-width: 768px) {
-      header {
-        height: 80px;
-        padding: 0 15px;
-      }
-
-      .logo-img {
-        height: 70px;
-        max-width: 220px;
-      }
-
-      .contact-right {
-        right: 15px;
-        bottom: 10px;
-        font-size: 0.95rem;
-        gap: 5px;
-      }
-
-      .contact-right a {
-        font-size: 0.92rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      header {
-        height: 70px;
-        padding: 0 12px;
-      }
-
-      .logo-img {
-        height: 62px;
-        max-width: 190px;
-      }
-
-      .contact-right {
-        right: 12px;
-        bottom: 8px;
-        font-size: 0.9rem;
-        gap: 4px;
-      }
-
-      .contact-right a {
-        font-size: 0.88rem;
-      }
-
-      .contact-right i {
-        font-size: 1.05rem;
-      }
-    }
-
-    /* Hero – сразу под шапкой */
-    .hero {
-      height: 56vw;
-      max-height: 70vh;
-      min-height: 300px;
-      margin-top: 0;
-      overflow: hidden;
-      position: relative;
-      background: #000;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-
-    @media (max-width: 992px) {
-      .hero { height: 60vw; max-height: 65vh; }
-    }
-    @media (orientation: landscape) and (max-height: 600px) {
-      .hero { height: 90vh; max-height: none; margin-top: 0; }
-    }
-
-    /* === ГАЛЕРЕЯ И ОСТАЛЬНОЕ === */
-    .gallery-section { padding: 40px 40px 60px; background: #f5f2eb; text-align: left; }
-    .section-description { font-size: 1.2rem; color: #333; line-height: 1.6; text-align: justify; margin-bottom: 20px; }
-    .section-title { font-size: 2.4rem; margin: 60px 0 15px; letter-spacing: 1px; font-weight: 700; text-transform: uppercase; text-align: center;
-      background: linear-gradient(135deg,#8c8c88 0%,#b8b8b5 20%,#c8c8c5 40%,#d8d8d5 50%,#c8c8c5 60%,#b8b8b5 80%,#a0a09c 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 4px rgba(140,140,136,0.3)); text-shadow: 0 1px 1px rgba(0,0,0,0.1);
-      background-size: 300% 300%; animation: gradientShift 10s ease infinite; }
-    @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-    .services-list { list-style:none; padding:0; margin:20px 0; }
-    .services-list li { font-size:1.2rem; color:#333; margin-bottom:16px; display:flex; align-items:flex-start; }
-    .services-list li i { margin-right:14px; font-size:1.6em; font-weight:900; width:28px; text-align:center; color: var(--warm-yellow); }
-
-    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:35px; margin-top:60px; }
-    .project-card { background:#252525; border-radius:18px; overflow:hidden; box-shadow:0 12px 35px rgba(0,0,0,0.45);
-      transition:all .4s cubic-bezier(.25,.8,.25,1); border:1px solid #333; cursor:pointer; aspect-ratio:3/4; min-height:400px; }
-    .project-card:hover { transform:translateY(-15px); box-shadow:0 25px 50px rgba(255,107,0,.15); border-color:var(--orange); }
-    .main-photo { width:100%; height:100%; object-fit:cover; object-position:center; transition:transform .4s ease;
-      user-select:none; background:#252525; display:block; }
-    .main-photo:hover { transform:scale(1.04); }
-
-    .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%;
-      background:rgba(0,0,0,.97); justify-content:center; align-items:center; padding:20px; }
-    .modal-content { max-width:92%; max-height:92%; border-radius:18px; overflow:hidden;
-      box-shadow:0 0 60px rgba(255,107,0,.25); border:1px solid #444; }
-    .modal img { width:100%; max-height:86vh; object-fit:contain; }
-    .close-btn,.nav-btn { position:absolute; background:var(--orange); color:#000; width:52px; height:52px;
-      border-radius:50%; font-size:26px; font-weight:bold; display:flex; align-items:center; justify-content:center;
-      cursor:pointer; transition:all .3s ease; box-shadow:0 4px 15px rgba(0,0,0,.5); }
-    .close-btn:hover,.nav-btn:hover { background:#fff; transform:scale(1.15); box-shadow:0 6px 20px rgba(255,107,0,.6); }
-    .close-btn { top:20px; right:20px; } .prev-btn { left:20px; } .next-btn { right:20px; }
-
-    .footer { padding:20px; text-align:center; background:#111; border-top:1px solid rgba(255,107,0,.2); }
-    .footer .contact { display:flex; justify-content:center; gap:10px; }
-    .footer .contact a { font-size:1rem; color:#ddd; text-decoration:none; display:flex; align-items:center; gap:6px; }
-    .footer .contact a:hover { color:var(--orange); }
-
-    @media (max-width:992px){ .gallery{grid-template-columns:repeat(2,1fr)} .section-title{font-size:2.2rem} }
-    @media (max-width:768px){
-      .gallery-section{padding:30px 20px 50px} .section-title{font-size:2rem}
-      .section-description{font-size:1.1rem} .services-list li{font-size:1.1rem}
-      .services-list li i{font-size:1.5em;margin-right:12px}
-    }
-    @media (max-width:576px){
-      .gallery{grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
-      .project-card{min-height:0;aspect-ratio:3/4} .section-title{font-size:1.6rem;margin-top:40px}
-      .section-description{font-size:.9rem} .services-list li{font-size:.9rem}
-      .services-list li i{font-size:1.3em;margin-right:10px} .footer .contact a{font-size:.9rem}
-    }
-    @media (max-width:360px){ .gallery{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
 
-  <!-- ШАПКА С КОНТАКТАМИ В ПРАВОМ НИЖНЕМ УГЛУ -->
+  <!-- HEADER -->
   <header>
     <img src="esdesign.jpg" alt="ESDESIGN Logo" class="logo-img">
-    
     <div class="contact-right">
       <a href="tel:+37125538622"><i class="fas fa-phone"></i> +371 255 386 22</a>
       <a href="mailto:metalhammers@inbox.lv"><i class="fas fa-envelope"></i> metalhammers@inbox.lv</a>
     </div>
   </header>
 
-  <!-- Hero – сразу под шапкой -->
+  <!-- HERO -->
   <section class="hero">
     <img src="img/my-truck7.jpg" alt="HammerWrap – Kravas auto aplīmēšana" class="hero-image">
   </section>
 
-  <!-- Gallery Section -->
+  <!-- GALLERY -->
   <section class="gallery-section">
     <p class="section-description">
       Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.
@@ -242,6 +214,7 @@
 
     <h2 class="section-title">Fotogalerija</h2>
     <div class="gallery">
+      <!-- Карточки галереи (без изменений) -->
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_2.jpg" alt="Project 1">
       </div>
@@ -287,26 +260,26 @@
       <div class="project-card" data-images="photo/p15_1.jpg,photo/p15_2.jpg,photo/p15_3.jpg,photo/p15_4.jpg">
         <img class="main-photo" src="photo/p15_1.jpg" alt="Project 15">
       </div>
-
-        <div class="project-card" data-images="photo/p16_1.jpg,photo/p16_2.jpg,photo/p16_3.jpg,photo/p16_4.jpg,photo/p16_5.jpg,photo/p16_6.jpg">
+      <div class="project-card" data-images="photo/p16_1.jpg,photo/p16_2.jpg,photo/p16_3.jpg,photo/p16_4.jpg,photo/p16_5.jpg,photo/p16_6.jpg">
         <img class="main-photo" src="photo/p16_1.jpg" alt="Project 16">
       </div>
     </div>
   </section>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-   <span class="nav-btn prev-btn">←</span>
-    <span class="nav-btn next-btn">→</span>
+    <span class="nav-btn prev-btn">Left Arrow</span>
+    <span class="nav-btn next-btn">Right Arrow</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="contact"></div>
+    <p class="footer-slogan">Tavs dizains – tava vizītkarte uz ceļa!</p>
   </footer>
 
   <script>
@@ -349,12 +322,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
