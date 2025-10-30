@@ -138,18 +138,31 @@
 
     /* ==== СЛОГАН – УЗКИЙ, НАКЛОННЫЙ, ЦВЕТ КАК У КОНТАКТОВ ==== */
     .footer-slogan{
-      font-family:'Montserrat',sans-serif;
-      font-weight:400;
-      font-style:italic;               /* наклон */
-      font-size:1.6rem;
-      letter-spacing:1.5px;
-      
-      color:#e6e6e6;      
-      text-shadow:0 2px 4px rgba(0,0,0,0.5);
-      line-height:1;
-      margin:0;
-      padding:0 10px;
-    }
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  font-style:italic;
+  font-size:1.6rem;
+  letter-spacing:1.5px;
+  color:#e6e6e6;
+
+  /* ✅ новая более красивая тень */
+  text-shadow:
+      0 2px 6px rgba(0,0,0,0.6),        /* мягкая глубокая тень вниз */
+      0 0 6px rgba(255,107,0,0.3);     /* чуть-чуть оранжевого сияния */
+
+  line-height:1;
+  margin:0;
+  padding:0 10px;
+  transition:0.3s ease;
+}
+
+/* Доп — наводка (необязательно, можно убрать) */
+.footer-slogan:hover{
+  text-shadow:
+      0 2px 8px rgba(0,0,0,0.75),
+      0 0 9px rgba(255,107,0,0.45);
+}
+
 
     /* ==== АДАПТИВНОСТЬ ==== */
     @media(max-width:992px){
@@ -202,15 +215,18 @@
   <!-- GALLERY -->
   <section class="gallery-section">
     <p class="section-description">
-      Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai. <br>Krāsas, kas neizbalē. 3M krāsainās plēves kas saglabā spilgtumu gadiem!
-      <br>Padari savu transportu pamanāmu uz jebkura ceļa! 
-    </p>
+      Pilna servisa kravas auto aplīmēšana no dizaina līdz profesionālai montāžai.Krāsas, kas neizbalē. 3M krāsainās plēves kas saglabā spilgtumu gadiem!</p>
+      
 
     <ul class="services-list">
       <li><i class="fas fa-check"></i> Dizains – izstrādājam individuālu, profesionālu dizainu, kas atspoguļo tavu zīmolu.</li>
-      <li><i class="fas fa-check"></i> Druka – strādājam tikai ar 3M plēvēm, kurām ir līdz pat 10 gadu garantija.</li>
+      <li><i class="fas fa-check"></i> Druka – izmantojam augstākās kvalitātes, laikapstākļiem izturīgus materiālus.</li>
       <li><i class="fas fa-check"></i> Aplīmēšana – precīza un kvalitatīva montāža lielgabarīta transportam.</li>
     </ul>
+
+ <p class="section-description">
+      Padari savu transportu pamanāmu uz jebkura ceļa!</p>
+
 
     <h2 class="section-title">Fotogalerija</h2>
     <div class="gallery">
@@ -322,11 +338,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
 
 
 
