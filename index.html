@@ -48,7 +48,7 @@
     .gallery-section { padding:40px 40px 60px; background:#f5f2eb; text-align:left; }
     .section-description { 
       font-size:1.2rem; color:var(--gray-text); line-height:1.6; text-align:justify; margin-bottom:20px;
-      font-weight:400; /* как в оригинале */
+      font-weight:400;
     }
     .section-title {
       font-size:2.4rem; margin:60px 0 15px; letter-spacing:1px; font-weight:700;
@@ -108,36 +108,41 @@
 
     /* FOOTER */
     .footer {
-      position:relative; padding:20px; text-align:center; background:#4A4A4A;
+      position:relative; padding:22px 20px; text-align:center; background:#4A4A4A;
       border-top:1px solid rgba(255,107,0,0.2);
       display:flex; flex-direction:column; justify-content:center; align-items:center;
-      gap:12px;
+      gap:14px;
     }
-    .footer .contact { 
-      display:flex; justify-content:center; gap:15px; flex-wrap:wrap; 
-    }
-    .footer .contact a { 
-      font-size:1rem; color:var(--contact-color); text-decoration:none; 
-      display:flex; align-items:center; gap:6px; transition:0.3s;
-    }
-    .footer .contact a:hover { color:var(--orange); }
-    .footer .contact i { color:var(--warm-yellow); font-size:1.1rem; }
 
-    /* СЛОГАН — как .section-description */
+    /* СЛОГАН — сверху, крупнее */
     .footer-slogan {
-      font-size:1.2rem;
-      color:var(--contact-color); /* #ddd */
+      font-size:1.5rem;
+      color:var(--contact-color);
       line-height:1.6;
       font-weight:400;
       margin:0;
-      padding:0 10px;
+      padding:0 15px;
+      text-align:center;
     }
+
+    /* КОНТАКТЫ — снизу, слева/справа */
+    .footer .contact {
+      display:flex; justify-content:space-between; align-items:center;
+      width:100%; max-width:500px; padding:0 20px; flex-wrap:wrap; gap:15px;
+    }
+    .footer .contact a {
+      font-size:1rem; color:var(--contact-color); text-decoration:none;
+      display:flex; align-items:center; gap:6px; transition:0.3s;
+      white-space:nowrap;
+    }
+    .footer .contact a:hover { color:var(--orange); }
+    .footer .contact i { color:var(--warm-yellow); font-size:1.1rem; }
 
     /* АДАПТИВНОСТЬ */
     @media(max-width:992px) {
       .gallery { grid-template-columns:repeat(2,1fr); }
       .section-title { font-size:2.2rem; }
-      .footer-slogan { font-size:1.1rem; }
+      .footer-slogan { font-size:1.35rem; }
     }
     @media(max-width:768px) {
       header { height:80px; padding:0 15px; }
@@ -148,8 +153,9 @@
       .section-description { font-size:1.1rem; }
       .services-list li { font-size:1.1rem; }
       .services-list li i { font-size:1.5em; margin-right:12px; }
-      .footer { padding:18px 15px; }
-      .footer-slogan { font-size:1.0rem; }
+      .footer { padding:18px 15px; gap:12px; }
+      .footer-slogan { font-size:1.25rem; }
+      .footer .contact { justify-content:center; }
     }
     @media(max-width:576px) {
       header { height:70px; padding:0 12px; }
@@ -164,13 +170,14 @@
       .services-list li { font-size:1.0rem; }
       .services-list li i { font-size:1.3em; margin-right:10px; }
       .footer .contact a { font-size:.9rem; }
-      .footer { padding:14px 12px; }
-      .footer-slogan { font-size:0.95rem; }
+      .footer { padding:16px 12px; gap:10px; }
+      .footer-slogan { font-size:1.15rem; }
       .dot { width:10px; height:10px; }
     }
     @media(max-width:360px) {
       .gallery { grid-template-columns:1fr; }
-      .footer-slogan { font-size:1.0rem; }
+      .footer-slogan { font-size:1.1rem; }
+      .footer .contact { flex-direction:column; gap:8px; }
     }
     @media(orientation:landscape) and (max-height:600px) {
       .hero { height:90vh; max-height:none; }
@@ -274,11 +281,11 @@
 
   <!-- FOOTER -->
   <footer class="footer">
+    <p class="footer-slogan">Mūsu dizains – tava vizītkarte uz ceļa!</p>
     <div class="contact">
-      <a href="tel:+37125538622"><i class="fas fa-phone"></i> +371 255 386 22</a>
+      <a href="tel:+37125538622"><i class="fas fa-phone"></i> +37125538622</a>
       <a href="mailto:metalhammers@inbox.lv"><i class="fas fa-envelope"></i> metalhammers@inbox.lv</a>
     </div>
-    <p class="footer-slogan">Mūsu dizains – tava vizītkarte uz ceļa!</p>
   </footer>
 
   <script>
