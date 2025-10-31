@@ -94,7 +94,7 @@
     /* GALLERY SECTION */
     .gallery-section { 
       padding: 40px 40px 60px; 
-      background: #f5f2eb; /* ← ИСПРАВЛЕНО: оригинальный цвет */
+      background: #f5f2eb; /* ← ОРИГИНАЛЬНЫЙ ЦВЕТ */
       text-align: left; 
     }
     .section-description { 
@@ -272,7 +272,7 @@
       background: var(--warm-yellow); 
     }
 
-    /* FOOTER — ИСПРАВЛЕННЫЙ */
+    /* FOOTER — КОНТАКТЫ ДРУГ ПОД ДРУГОМ */
     .footer {
       position: relative; 
       padding: 22px 20px; 
@@ -291,49 +291,48 @@
       line-height: 1.4;
       font-weight: 500;
       margin: 0;
-      padding: 0 12px;
+      padding: 0 16px;
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 100%;
       display: block;
-      font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+      font-size: clamp(1.1rem, 4.2vw, 1.6rem); /* ← Без обрезания */
     }
 
     .footer .contact {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%; 
-      max-width: 500px; 
-      padding: 0 15px; 
-      flex-wrap: nowrap;
-      gap: 16px;
+      flex-direction: column;     /* ← ВЕРТИКАЛЬНО */
+      align-items: center;        /* ← ПО ЦЕНТРУ */
+      gap: 8px;
+      width: 100%;
+      max-width: 300px;
+      padding: 0 10px;
     }
+
     .footer .contact a {
       color: var(--contact-color); 
       text-decoration: none;
       display: flex; 
       align-items: center; 
-      gap: 6px; 
+      gap: 8px; 
       transition: 0.3s;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex: 1;
+      font-size: clamp(0.85rem, 3vw, 1rem);
       justify-content: center;
-      font-size: clamp(0.9rem, 3vw, 1rem);
     }
+
     .footer .contact a:hover { 
       color: var(--orange); 
     }
+
     .footer .contact i { 
       color: var(--warm-yellow); 
-      font-size: clamp(0.9rem, 2.8vw, 1.1rem);
+      font-size: clamp(1rem, 3vw, 1.1rem);
     }
 
-    /* АДАПТИВНОСТЬ — УПРОЩЁННАЯ */
+    /* АДАПТИВНОСТЬ */
     @media(max-width:992px) {
       .gallery { grid-template-columns: repeat(2,1fr); }
       .section-title { font-size: 2.2rem; }
@@ -348,7 +347,6 @@
       .services-list li { font-size: 1.1rem; }
       .services-list li i { font-size: 1.5em; margin-right: 12px; }
       .footer { padding: 18px 15px; gap: 10px; }
-      .footer .contact { gap: 14px; }
     }
     @media(max-width:576px) {
       header { height: 70px; padding: 0 12px; }
@@ -363,11 +361,18 @@
       .services-list li { font-size: 1.0rem; }
       .services-list li i { font-size: 1.3em; margin-right: 10px; }
       .footer { padding: 14px 12px; gap: 8px; }
-      .footer .contact { gap: 12px; padding: 0 10px; }
+      .footer .contact { gap: 6px; padding: 0 10px; }
+
+      /* Слоган не обрезается */
+      .footer-slogan {
+        font-size: 1.1rem;
+        padding: 0 16px;
+      }
     }
     @media(max-width:400px) {
       .gallery { grid-template-columns: 1fr; }
-      .footer .contact { gap: 10px; }
+      .footer-slogan { font-size: 1.05rem; padding: 0 12px; }
+      .footer .contact a { font-size: 0.85rem; }
     }
     @media(orientation:landscape) and (max-height:600px) {
       .hero { height: 90vh; max-height: none; }
@@ -593,5 +598,3 @@
   </script>
 </body>
 </html>
-
-
