@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>SDesign – Pilna Servisa Kravas Auto Aplīmēšana</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Montserrat + Bebas Neue -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -15,7 +14,7 @@
       --warm-yellow: #ff9a00;
       --overlay: rgba(0, 0, 0, 0.55);
       --gray-text: #333;
-      --contact-color: #ddd;   /* <-- цвет контактов */
+      --contact-color: #ddd;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -26,7 +25,7 @@
       overflow-x:hidden;
     }
 
-    /* ==== HEADER ==== */
+    /* HEADER */
     header{
       position:relative;z-index:100;padding:0 40px;height:90px;
       display:flex;justify-content:flex-start;align-items:center;
@@ -62,13 +61,13 @@
       .contact-right i{font-size:1.05rem;}
     }
 
-    /* ==== HERO ==== */
+    /* HERO */
     .hero{height:56vw;max-height:70vh;min-height:300px;overflow:hidden;position:relative;background:#000;}
     .hero-image{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
     @media(max-width:992px){.hero{height:60vw;max-height:65vh;}}
     @media(orientation:landscape) and (max-height:600px){.hero{height:90vh;max-height:none;}}
 
-    /* ==== GALLERY ==== */
+    /* GALLERY */
     .gallery-section{padding:40px 40px 60px;background:#f5f2eb;text-align:left;}
     .section-description{font-size:1.2rem;color:var(--gray-text);line-height:1.6;text-align:justify;margin-bottom:20px;}
     .section-title{
@@ -95,33 +94,52 @@
     }
     .main-photo{
       width:100%;height:100%;object-fit:cover;object-position:center;
-      transition:transform .4s ease;user-select:none;background:#252525;display:block;
+      transition:transform .4s ease;background:#252525;display:block;
+      cursor:pointer;
     }
     .main-photo:hover{transform:scale(1.04);}
 
+    /* MODAL */
     .modal{
       display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;
       background:rgba(0,0,0,.97);justify-content:center;align-items:center;padding:20px;
+      flex-direction:column;gap:15px;
     }
     .modal-content{
-      max-width:92%;max-height:92%;border-radius:18px;overflow:hidden;
-      box-shadow:0 0 60px rgba(255,107,0,.25);border:1px solid #444;
+      max-width:92%;max-height:82vh;border-radius:18px;overflow:hidden;
+      box-shadow:0 0 60px rgba(255,107,0,.25);border:1px solid #444;position:relative;
     }
-    .modal img{width:100%;max-height:86vh;object-fit:contain;}
+    .modal img{
+      width:100%;height:100%;object-fit:contain;display:block;
+      transform:scale(0.95);transition:transform .5s ease;
+      cursor:default;
+    }
+    .modal img.active{transform:scale(1);}
+
     .close-btn,.nav-btn{
       position:absolute;background:var(--warm-yellow);color:#000;width:52px;height:52px;
       border-radius:50%;font-size:26px;font-weight:bold;display:flex;align-items:center;
       justify-content:center;cursor:pointer;transition:all .3s ease;
-      box-shadow:0 4px 15px rgba(0,0,0,.5);
+      box-shadow:0 4px 15px rgba(0,0,0,.5);z-index:10;
     }
     .close-btn:hover,.nav-btn:hover{
       background:#fff;transform:scale(1.15);box-shadow:0 6px 20px rgba(255,107,0,.6);
     }
     .close-btn{top:20px;right:20px;}
-    .prev-btn{left:20px;}
-    .next-btn{right:20px;}
+    .prev-btn{left:20px;top:50%;transform:translateY(-50%);}
+    .next-btn{right:20px;top:50%;transform:translateY(-50%);}
 
-    /* ==== FOOTER ==== */
+    .dots-container{
+      display:flex;gap:10px;justify-content:center;padding:10px 0;
+      flex-wrap:wrap;max-width:90%;
+    }
+    .dot{
+      width:12px;height:12px;border-radius:50%;background:#555;
+      cursor:pointer;transition:all .3s ease;
+    }
+    .dot.active{background:var(--orange);box-shadow:0 0 8px rgba(255,107,0,.6);}
+    .dot:hover{background:var(--warm-yellow);}
+
     .footer{
       position:relative;padding:7px 20px;text-align:center;background:#4A4A4A;
       border-top:1px solid rgba(255,107,0,0.2);min-height:25px;
@@ -135,36 +153,16 @@
       display:flex;align-items:center;gap:6px;
     }
     .footer .contact a:hover{color:var(--orange);}
-
-    /* ==== СЛОГАН – УЗКИЙ, НАКЛОННЫЙ, ЦВЕТ КАК У КОНТАКТОВ ==== */
     .footer-slogan{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-style:italic;
-  font-size:1.6rem;
-  letter-spacing:1.5px;
-  color:#e6e6e6;
+      font-family:'Montserrat',sans-serif;
+      font-weight:400;font-style:italic;font-size:1.6rem;letter-spacing:1.5px;
+      color:#e6e6e6;text-shadow:0 2px 6px rgba(0,0,0,0.6),0 0 6px rgba(255,107,0,0.3);
+      line-height:1;margin:0;padding:0 10px;transition:0.3s ease;
+    }
+    .footer-slogan:hover{
+      text-shadow:0 2px 8px rgba(0,0,0,0.75),0 0 9px rgba(255,107,0,0.45);
+    }
 
-  /* ✅ новая более красивая тень */
-  text-shadow:
-      0 2px 6px rgba(0,0,0,0.6),        /* мягкая глубокая тень вниз */
-      0 0 6px rgba(255,107,0,0.3);     /* чуть-чуть оранжевого сияния */
-
-  line-height:1;
-  margin:0;
-  padding:0 10px;
-  transition:0.3s ease;
-}
-
-/* Доп — наводка (необязательно, можно убрать) */
-.footer-slogan:hover{
-  text-shadow:
-      0 2px 8px rgba(0,0,0,0.75),
-      0 0 9px rgba(255,107,0,0.45);
-}
-
-
-    /* ==== АДАПТИВНОСТЬ ==== */
     @media(max-width:992px){
       .gallery{grid-template-columns:repeat(2,1fr);}
       .section-title{font-size:2.2rem;}
@@ -189,6 +187,7 @@
       .footer .contact a{font-size:.9rem;}
       .footer{padding:10px 15px;}
       .footer-slogan{font-size:1.0rem;letter-spacing:0.9px;}
+      .dot{width:10px;height:10px;}
     }
     @media(max-width:360px){
       .gallery{grid-template-columns:1fr;}
@@ -219,23 +218,17 @@
 Atšķirībā no drukas, kas ar laiku izbalē, mēs izmantojam augstas kvalitātes 3M krāsainās plēves.
 Tās saglabā spilgtas krāsas un izcilu noturību gadiem — ideāls risinājums ilgnoturīgam un profesionālam rezultātam.
 </p>
-      
-
     <ul class="services-list">
       <li><i class="fas fa-check"></i> Individuāla pieeja katram projektam </li>
       <li><i class="fas fa-check"></i> Kvalitatīva izpilde līdz sīkākai detaļai </li>
       <li><i class="fas fa-check"></i> Ilgmūžīgs rezultāts ar augstas kvalitātes materiāliem </li>
     </ul>
-
- <p class="section-description" style="text-align:left;">
-  Padari savu transportu pamanāmu uz jebkura ceļa!
-</p>
-
-
-
+    <p class="section-description" style="text-align:left;">
+      Padari savu transportu pamanāmu uz jebkura ceļa!
+    </p>
     <h2 class="section-title">Fotogalerija</h2>
     <div class="gallery">
-      <!-- Карточки галереи (без изменений) -->
+      <!-- ВСЕ 16 ПРОЕКТОВ -->
       <div class="project-card" data-images="photo/p1_1.jpg,photo/p1_2.jpg,photo/p1_3.jpg,photo/p1_4.jpg">
         <img class="main-photo" src="photo/p1_21.jpg" alt="Project 1">
       </div>
@@ -291,10 +284,11 @@ Tās saglabā spilgtas krāsas un izcilu noturību gadiem — ideāls risinājum
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
     <span class="nav-btn prev-btn">←</span>
-    <span class="nav-btn next-btn">→</span>
+   <span class="nav-btn next-btn">→</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
+    <div class="dots-container" id="dotsContainer"></div>
   </div>
 
   <!-- FOOTER -->
@@ -306,78 +300,140 @@ Tās saglabā spilgtas krāsas un izcilu noturību gadiem — ideāls risinājum
   <script>
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
+    const dotsContainer = document.getElementById('dotsContainer');
     const closeBtn = document.querySelector('.close-btn');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     let currentImages = [], currentIndex = 0;
+    let slideshowInterval = null;
+    let userInteracted = false;
+    let touchStartX = 0;
+    let isMouseOverModal = false;
 
+    // Открытие
     document.querySelectorAll('.project-card').forEach(card => {
       const main = card.querySelector('.main-photo');
       const images = card.dataset.images.split(',');
-      main.onclick = e => { e.preventDefault(); openModal(images, 0); };
+      main.onclick = e => {
+        e.preventDefault();
+        openModal(images, 0);
+      };
     });
 
     function openModal(imgs, idx) {
-      currentImages = imgs; currentIndex = idx;
-      modalImg.src = imgs[idx]; modal.style.display = 'flex';
+      currentImages = imgs;
+      currentIndex = idx;
+      modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      userInteracted = false;
+      isMouseOverModal = false;
+
+      renderDots();
+      showImg(idx, false);
+      startSlideshow();
     }
-    function showImg(i) {
+
+    function showImg(i, isUserAction = false) {
       if (i < 0) i = currentImages.length - 1;
       if (i >= currentImages.length) i = 0;
-      currentIndex = i; modalImg.src = currentImages[i];
+      currentIndex = i;
+
+      if (isUserAction) {
+        userInteracted = true;
+      }
+
+      modalImg.classList.remove('active');
+      const newImg = new Image();
+      newImg.onload = () => {
+        modalImg.src = newImg.src;
+        modalImg.classList.add('active');
+        updateDots();
+      };
+      newImg.onerror = () => {
+        console.error('Ошибка загрузки:', currentImages[i]);
+      };
+      newImg.src = currentImages[i];
     }
 
-    closeBtn.onclick = () => { modal.style.display='none'; document.body.style.overflow='auto'; };
-    prevBtn.onclick = () => showImg(currentIndex - 1);
-    nextBtn.onclick = () => showImg(currentIndex + 1);
-    window.onclick = e => { if (e.target===modal) closeBtn.click(); };
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      currentImages.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        dot.onclick = () => {
+          showImg(i, true);
+          startSlideshow();
+        };
+        dotsContainer.appendChild(dot);
+      });
+      updateDots();
+    }
+
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function startSlideshow() {
+      stopSlideshow();
+      slideshowInterval = setInterval(() => {
+        if (!userInteracted && !isMouseOverModal) {
+          showImg(currentIndex + 1, false);
+        }
+      }, 2000);
+    }
+
+    function stopSlideshow() {
+      if (slideshowInterval) clearInterval(slideshowInterval);
+      slideshowInterval = null;
+    }
+
+    prevBtn.onclick = () => { showImg(currentIndex - 1, true); startSlideshow(); };
+    nextBtn.onclick = () => { showImg(currentIndex + 1, true); startSlideshow(); };
+
+    closeBtn.onclick = () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      stopSlideshow();
+    };
+
+    window.onclick = e => { if (e.target === modal) closeBtn.click(); };
 
     document.addEventListener('keydown', e => {
-      if (modal.style.display==='flex') {
-        if (e.key==='ArrowLeft') showImg(currentIndex-1);
-        if (e.key==='ArrowRight') showImg(currentIndex+1);
-        if (e.key==='Escape') closeBtn.click();
+      if (modal.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') { showImg(currentIndex - 1, true); startSlideshow(); }
+        if (e.key === 'ArrowRight') { showImg(currentIndex + 1, true); startSlideshow(); }
+        if (e.key === 'Escape') closeBtn.click();
+      }
+    });
+
+    modal.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+    modal.addEventListener('touchend', e => {
+      if (!touchStartX) return;
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        showImg(diff > 0 ? currentIndex + 1 : currentIndex - 1, true);
+        startSlideshow();
+      }
+      touchStartX = 0;
+    }, {passive: true});
+
+    // Пауза при движении мыши
+    modal.addEventListener('mousemove', () => {
+      if (!userInteracted) {
+        isMouseOverModal = true;
+        stopSlideshow();
+      }
+    });
+
+    modal.addEventListener('mouseleave', () => {
+      isMouseOverModal = false;
+      if (!userInteracted && modal.style.display === 'flex') {
+        startSlideshow();
       }
     });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
