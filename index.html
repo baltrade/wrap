@@ -46,7 +46,10 @@
 
     /* GALLERY SECTION */
     .gallery-section { padding:40px 40px 60px; background:#f5f2eb; text-align:left; }
-    .section-description { font-size:1.2rem; color:var(--gray-text); line-height:1.6; text-align:justify; margin-bottom:20px; }
+    .section-description { 
+      font-size:1.2rem; color:var(--gray-text); line-height:1.6; text-align:justify; margin-bottom:20px;
+      font-weight:400; /* как в оригинале */
+    }
     .section-title {
       font-size:2.4rem; margin:60px 0 15px; letter-spacing:1px; font-weight:700;
       text-transform:uppercase; text-align:center;
@@ -103,26 +106,38 @@
     .dot.active { background:var(--orange); box-shadow:0 0 8px rgba(255,107,0,.6); }
     .dot:hover { background:var(--warm-yellow); }
 
+    /* FOOTER */
     .footer {
-      position:relative; padding:7px 20px; text-align:center; background:#4A4A4A;
-      border-top:1px solid rgba(255,107,0,0.2); min-height:25px;
+      position:relative; padding:20px; text-align:center; background:#4A4A4A;
+      border-top:1px solid rgba(255,107,0,0.2);
       display:flex; flex-direction:column; justify-content:center; align-items:center;
+      gap:12px;
     }
-    .footer .contact { display:flex; justify-content:center; gap:10px; margin-bottom:8px; }
-    .footer .contact a { font-size:1rem; color:var(--contact-color); text-decoration:none; display:flex; align-items:center; gap:6px; }
+    .footer .contact { 
+      display:flex; justify-content:center; gap:15px; flex-wrap:wrap; 
+    }
+    .footer .contact a { 
+      font-size:1rem; color:var(--contact-color); text-decoration:none; 
+      display:flex; align-items:center; gap:6px; transition:0.3s;
+    }
     .footer .contact a:hover { color:var(--orange); }
+    .footer .contact i { color:var(--warm-yellow); font-size:1.1rem; }
+
+    /* СЛОГАН — как .section-description */
     .footer-slogan {
-      font-weight:400; font-style:italic; font-size:1.6rem; letter-spacing:1.5px;
-      color:#e6e6e6; text-shadow:0 2px 6px rgba(0,0,0,0.6),0 0 6px rgba(255,107,0,0.3);
-      line-height:1; margin:0; padding:0 10px; transition:0.3s ease;
+      font-size:1.2rem;
+      color:var(--contact-color); /* #ddd */
+      line-height:1.6;
+      font-weight:400;
+      margin:0;
+      padding:0 10px;
     }
-    .footer-slogan:hover { text-shadow:0 2px 8px rgba(0,0,0,0.75),0 0 9px rgba(255,107,0,0.45); }
 
     /* АДАПТИВНОСТЬ */
     @media(max-width:992px) {
       .gallery { grid-template-columns:repeat(2,1fr); }
       .section-title { font-size:2.2rem; }
-      .footer-slogan { font-size:1.9rem; letter-spacing:1.8px; }
+      .footer-slogan { font-size:1.1rem; }
     }
     @media(max-width:768px) {
       header { height:80px; padding:0 15px; }
@@ -133,8 +148,8 @@
       .section-description { font-size:1.1rem; }
       .services-list li { font-size:1.1rem; }
       .services-list li i { font-size:1.5em; margin-right:12px; }
-      .footer { padding:25px 20px; }
-      .footer-slogan { font-size:1.7rem; letter-spacing:1.5px; }
+      .footer { padding:18px 15px; }
+      .footer-slogan { font-size:1.0rem; }
     }
     @media(max-width:576px) {
       header { height:70px; padding:0 12px; }
@@ -149,13 +164,13 @@
       .services-list li { font-size:1.0rem; }
       .services-list li i { font-size:1.3em; margin-right:10px; }
       .footer .contact a { font-size:.9rem; }
-      .footer { padding:10px 15px; }
-      .footer-slogan { font-size:1.0rem; letter-spacing:0.9px; }
+      .footer { padding:14px 12px; }
+      .footer-slogan { font-size:0.95rem; }
       .dot { width:10px; height:10px; }
     }
     @media(max-width:360px) {
       .gallery { grid-template-columns:1fr; }
-      .footer-slogan { font-size:1.25rem; letter-spacing:1px; }
+      .footer-slogan { font-size:1.0rem; }
     }
     @media(orientation:landscape) and (max-height:600px) {
       .hero { height:90vh; max-height:none; }
@@ -249,8 +264,8 @@
   <!-- MODAL -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-    <span class="nav-btn prev-btn">←</span>
-    <span class="nav-btn next-btn">→</span>
+    <span class="nav-btn prev-btn">Left Arrow</span>
+    <span class="nav-btn next-btn">Right Arrow</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
@@ -259,7 +274,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="contact"></div>
+    <div class="contact">
+      <a href="tel:+37125538622"><i class="fas fa-phone"></i> +371 255 386 22</a>
+      <a href="mailto:metalhammers@inbox.lv"><i class="fas fa-envelope"></i> metalhammers@inbox.lv</a>
+    </div>
     <p class="footer-slogan">Mūsu dizains – tava vizītkarte uz ceļa!</p>
   </footer>
 
