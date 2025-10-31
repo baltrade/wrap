@@ -272,7 +272,7 @@
       background: var(--warm-yellow); 
     }
 
-    /* FOOTER — КОНТАКТЫ ДРУГ ПОД ДРУГОМ */
+    /* FOOTER */
     .footer {
       position: relative; 
       padding: 22px 20px; 
@@ -383,7 +383,7 @@
   <header>
     <img src="esdesign.jpg" alt="ESDESIGN Logo" class="logo-img">
     <div class="contact-right">
-      <a href="tel:+37125538622"><i class="fas fa-phone"></i> +37125538622</1></a>
+      <a href="tel:+37125538622"><i class="fas fa-phone"></i> +37125538622</a>
       <a href="mailto:metalhammers@inbox.lv"><i class="fas fa-envelope"></i> metalhammers@inbox.lv</a>
     </div>
   </header>
@@ -464,7 +464,7 @@
   <!-- MODAL -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-    <span class="nav-btn prev-btn">←</span>
+   <span class="nav-btn prev-btn">←</span>
     <span class="nav-btn next-btn">→</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
@@ -481,6 +481,7 @@
     </div>
   </footer>
 
+  <!-- ИСПРАВЛЕННЫЙ JAVASCRIPT -->
   <script>
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
@@ -566,8 +567,8 @@
     closeBtn.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; stopSlideshow(); };
     window.onclick = e => { if (e.target === modal) closeBtn.click(); };
 
+    // ИСПРАВЛЕНО: УДАЛЕНА ЛИШНЯЯ СКОБКА
     document.addEventListener('keydown', e => {
- {
       if (modal.style.display === 'flex') {
         if (e.key === 'ArrowLeft') { showImg(currentIndex - 1, true); startSlideshow(); }
         if (e.key === 'ArrowRight') { showImg(currentIndex + 1, true); startSlideshow(); }
