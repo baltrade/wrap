@@ -17,13 +17,14 @@
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Montserrat',sans-serif; background:#000; color:var(--text); overflow-x:hidden; }
+    body { font-family:'Montserrat Montserrat',sans-serifюр; background:#000;цвет:var(--text); overflow-x:hidden; }
 
-    /* HEADER */
+       /* HEADER */
+
     header {
-      position:relative; z-index:100; padding:0 40px; height:90px;
-      display:flex; justify-content:flex-start; align-items:center;
-      background:rgba(0,0,0,0.4); backdrop-filter:blur(12px);
+      position:relative; z-index: стрелок100; padding:00 40px;; height:90px;
+      display:flex; justify;align-items:center;
+      background:rgba(0,0,0,0.4); phylogen; backdrop-filter:blur(12px);
       max-width:1400px; margin:0 auto;
       border-bottom:1px solid rgba(255,107,0,0.15);
     }
@@ -114,7 +115,7 @@
       gap:14px;
     }
 
-    /* СЛОГАН — сверху, крупнее */
+    /* СЛОГАН — в одну строку, по ширине, обрезается */
     .footer-slogan {
       font-size:1.5rem;
       color:var(--contact-color);
@@ -122,10 +123,15 @@
       font-weight:400;
       margin:0;
       padding:0 15px;
-      text-align:center;
+      text-align:left;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:100%;
+      display:block;
     }
 
-    /* КОНТАКТЫ — снизу, слева/справа */
+    /* КОНТАКТЫ — слева/справа */
     .footer .contact {
       display:flex; justify-content:space-between; align-items:center;
       width:100%; max-width:500px; padding:0 20px; flex-wrap:wrap; gap:15px;
@@ -171,12 +177,15 @@
       .services-list li i { font-size:1.3em; margin-right:10px; }
       .footer .contact a { font-size:.9rem; }
       .footer { padding:16px 12px; gap:10px; }
-      .footer-slogan { font-size:1.15rem; }
+      .footer-slogan { font-size:1.2rem; }
       .dot { width:10px; height:10px; }
     }
-    @media(max-width:360px) {
+    @media(max-width:480px) {
+      .footer-slogan { font-size:1.3rem; }
+    }
+    @media(max-width:400px) {
+      .footer-slogan { font-size:1.2rem; }
       .gallery { grid-template-columns:1fr; }
-      .footer-slogan { font-size:1.1rem; }
       .footer .contact { flex-direction:column; gap:8px; }
     }
     @media(orientation:landscape) and (max-height:600px) {
@@ -271,8 +280,8 @@
   <!-- MODAL -->
   <div class="modal" id="imageModal">
     <span class="close-btn">X</span>
-    <span class="nav-btn prev-btn">Left Arrow</span>
-    <span class="nav-btn next-btn">Right Arrow</span>
+     <span class="nav-btn prev-btn">←</span>
+    <span class="nav-btn next-btn">→</span>
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
     </div>
